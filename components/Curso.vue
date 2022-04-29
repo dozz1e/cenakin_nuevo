@@ -49,8 +49,12 @@ export default {
       this.categoria.forEach((cat) => {
         if (40 === cat.id) {
           aux = "DIPLOMADO";
-        } else if (39 === cat.id) {
+        }
+        if (39 === cat.id) {
           aux = "CURSOS ONLINE";
+        }
+        if (42 === cat.id) {
+          aux = "CURSOS DE KINESIOLOGÍA";
         }
       });
 
