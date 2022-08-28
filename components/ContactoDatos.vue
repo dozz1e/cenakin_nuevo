@@ -56,7 +56,7 @@ export default {
       },
       {
         icono: "mdi-account-clock-outline",
-        texto: "Lunes a Viernes de 9:30 a 13:30 y 14:30 a 18:30 hrs.",
+        texto: "Lunes a Viernes de 9:30 a 13:00 y 15:00 a 18:00 hrs.",
       },
       {
         icono: "mdi-phone",

@@ -88,9 +88,4 @@ export default {
 };
 </script>
 
-<style lang="sass">
-#categorias
-  #cursos header
-    .header
-      color: #121212 !important
-</style>
+<style lang="sass"></style>

@@ -53,7 +53,7 @@ export default {
         if (39 === cat.id) {
           aux = "CURSOS ONLINE";
         }
-        if (42 === cat.id) {
+        if (41 === cat.id) {
           aux = "CURSOS DE KINESIOLOGÍA";
         }
       });

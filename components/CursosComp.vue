@@ -8,7 +8,57 @@
         </v-row>
       </header>
       <div v-if="0 < cursoBuscar.length">
-        <v-row>
+        <div v-if="categoria === 'salud'">
+          <v-row>
+            <v-col cols="12"><h2>Masoterapia</h2></v-col>
+            <curso
+              v-for="(curso, i) in catCurso('masoterapia')"
+              :key="i"
+              :titulo="curso.name"
+              :categoria="curso.categories"
+              :imagen="curso.featured_image_url"
+              :idCurso="curso.id"
+              :slug="curso.slug"
+            ></curso>
+          </v-row>
+          <v-row>
+            <v-col cols="12"><h2>Salud</h2></v-col>
+            <curso
+              v-for="(curso, i) in catCurso('salud-general')"
+              :key="i"
+              :titulo="curso.name"
+              :categoria="curso.categories"
+              :imagen="curso.featured_image_url"
+              :idCurso="curso.id"
+              :slug="curso.slug"
+            ></curso>
+          </v-row>
+          <v-row>
+            <v-col cols="12"><h2>Kinesiología</h2></v-col>
+            <curso
+              v-for="(curso, i) in catCurso('kinesiologia')"
+              :key="i"
+              :titulo="curso.name"
+              :categoria="curso.categories"
+              :imagen="curso.featured_image_url"
+              :idCurso="curso.id"
+              :slug="curso.slug"
+            ></curso>
+          </v-row>
+          <v-row>
+            <v-col cols="12"><h2>Diplomados</h2></v-col>
+            <curso
+              v-for="(curso, i) in catCurso('diplomado-salud')"
+              :key="i"
+              :titulo="curso.name"
+              :categoria="curso.categories"
+              :imagen="curso.featured_image_url"
+              :idCurso="curso.id"
+              :slug="curso.slug"
+            ></curso>
+          </v-row>
+        </div>
+        <v-row v-else>
           <curso
             v-for="(curso, i) in cursoBuscar"
             :key="i"
@@ -44,9 +94,20 @@ export default {
     cursoBuscar() {
       let cates = [];
       let aux = this.categoria;
-      if (this.categoria) {
+      if (aux) {
         cates = this.listadoCursos.filter(function (cat) {
           return cat.categories.some((ca) => aux === ca.slug);
+        });
+      }
+      return cates;
+    },
+  },
+  methods: {
+    catCurso(cate) {
+      let cates = [];
+      if (cate) {
+        cates = this.listadoCursos.filter(function (cat) {
+          return cat.categories.some((ca) => cate === ca.slug);
         });
       }
       return cates;
@@ -57,10 +118,9 @@ export default {
 
 <style lang="sass">
 #cursos
-  margin-top: -150px
   header
     .header
-      color: #eee
+      color: #fafafa
       font-family: 'Oswald', sans-serif
       font-size: 24px
       padding-bottom: 0

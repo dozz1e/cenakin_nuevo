@@ -25,7 +25,7 @@ export default {
         pregunta:
           "Me gustaría saber si sus cursos de masajes están reconocidos por el Ministerio de Salud.",
         respuesta:
-          "Nuestros espacios prácticos están aprobados por la resolución sanitaria N° 683 del Ministerio de Salud Viña del Mar - Quillota.",
+          "No se requiere, hasta la fecha, el Minsal, no exige una prueba de conocimientos para masoterapia.",
       },
       {
         pregunta:

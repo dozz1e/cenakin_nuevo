@@ -32,11 +32,11 @@ export default {
         "iPod Simulator",
         "iPad",
         "iPhone",
-        "iPod"
+        "iPod",
       ].includes(navigator.platform) ||
       (navigator.userAgent.includes("Mac") && "ontouchend" in document);
     let ext = "jpg";
     if (!aux) ext = "webp";
     commit("SET_EXTENSION", ext);
-  }
+  },
 };
