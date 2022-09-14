@@ -55,6 +55,7 @@ export default {
             "Un nuevo método de enseñanza para distintos cursos, con materiales incluidos, docentes kinesiólogos y calidad de servicio Viña del Mar, Chile.",
         },
         { property: "og:url", content: "https://www.cenakin.cl/" },
+        { property: "og:image", content: "https://cenakin.cl/images/logo_completo.png" },
       ],
     };
   },

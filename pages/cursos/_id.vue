@@ -305,7 +305,7 @@
                   <v-card-actions class="px-0 pb-0">
                     <v-btn
                       x-large
-                      :href="`https://cenakinaulaonline.com/carrito/?add-to-cart=${soloCurso.id}`"
+                      @click="btnComprar(soloCurso.id)"
                       target="_blank"
                       width="100%"
                     >
@@ -355,7 +355,7 @@
                   x-large
                   color="primary"
                   class="btn-basico"
-                  :href="`https://cenakinaulaonline.com/carrito/?add-to-cart=${soloCurso.id}`"
+                  @click="btnComprar(soloCurso.id)"
                   target="_blank"
                   >CONTRATAR CURSO</v-btn
                 >
@@ -470,6 +470,10 @@ export default {
   },
   methods: {
     ...mapActions("cursos", ["quitarCurso", "cambiarMenu"]),
+    btnComprar(idCurso){
+      fbq('track','AddToCart');
+      window.location.href = `https://cenakinaulaonline.com/carrito/?add-to-cart=${idCurso}`;
+    },
     favorito() {
       if ("mdi-heart" === this.iconoFavorito) {
         this.iconoFavorito = "mdi-heart-outline";
