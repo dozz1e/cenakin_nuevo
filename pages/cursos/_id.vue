@@ -424,6 +424,7 @@ export default {
   },
   mounted() {
     this.cambiarMenu(true);
+    fbq('track','AddToCart');
   },
   created() {
     this.quitarCurso();
