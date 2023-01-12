@@ -4,7 +4,7 @@ import axios from "axios";
 const rutas = async () => {
   let cursos = axios
     .get(
-      "https://cenakinaulaonline.com/wp-json/wc/v3/products?category=38&consumer_key=ck_8d87b7db23fc44e5cd9c9f1754c8ab64bf929840&consumer_secret=cs_4c5d058b5bf2d8080573c400de1ea5590d957499&per_page=100"
+      "https://cenakin.cl/otec/wp-json/wc/v3/products?category=22&per_page=100&consumer_key=ck_a62303a495e142cc35dbb14ca13884a4a8ae8b4e&consumer_secret=cs_49e0b6468aa1af67c931ed88fc59bfdacb5395ae"
     )
     .then((res) => {
       return res.data.map((crs) => {
@@ -60,6 +60,9 @@ export default {
         onload: "this.media='all'",
       },
     ],
+    script:[
+      { src: 'https://cenakin.cl/js/google-tag.js', defer: true }
+    ]
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css

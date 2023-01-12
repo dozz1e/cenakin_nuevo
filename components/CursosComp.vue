@@ -1,66 +1,53 @@
 <template>
   <div id="cursos">
-    <cargando v-if="0 >= listadoCursos.length"></cargando>
+    <cargando v-if="0 == listadoCursos.length"></cargando>
     <div v-else>
       <header class="pb-5">
         <v-row class="d-flex align-center">
           <v-col cols="12" xs="12" sm="7" class="header">NUESTROS CURSOS</v-col>
         </v-row>
       </header>
-      <div v-if="0 < cursoBuscar.length">
-        <div v-if="categoria === 'salud'">
-          <v-row>
-            <v-col cols="12"><h2>Masoterapia</h2></v-col>
-            <curso
-              v-for="(curso, i) in catCurso('masoterapia')"
-              :key="i"
-              :titulo="curso.name"
-              :categoria="curso.categories"
-              :imagen="curso.featured_image_url"
-              :idCurso="curso.id"
-              :slug="curso.slug"
-            ></curso>
-          </v-row>
-          <v-row>
-            <v-col cols="12"><h2>Salud</h2></v-col>
-            <curso
-              v-for="(curso, i) in catCurso('salud-general')"
-              :key="i"
-              :titulo="curso.name"
-              :categoria="curso.categories"
-              :imagen="curso.featured_image_url"
-              :idCurso="curso.id"
-              :slug="curso.slug"
-            ></curso>
-          </v-row>
-          <v-row>
-            <v-col cols="12"><h2>Kinesiología</h2></v-col>
-            <curso
-              v-for="(curso, i) in catCurso('kinesiologia')"
-              :key="i"
-              :titulo="curso.name"
-              :categoria="curso.categories"
-              :imagen="curso.featured_image_url"
-              :idCurso="curso.id"
-              :slug="curso.slug"
-            ></curso>
-          </v-row>
-          <v-row>
-            <v-col cols="12"><h2>Diplomados</h2></v-col>
-            <curso
-              v-for="(curso, i) in catCurso('diplomado-salud')"
-              :key="i"
-              :titulo="curso.name"
-              :categoria="curso.categories"
-              :imagen="curso.featured_image_url"
-              :idCurso="curso.id"
-              :slug="curso.slug"
-            ></curso>
-          </v-row>
-        </div>
-        <v-row v-else>
+      <div v-if="categoria === 'salud'">
+        <v-row>
+          <v-col cols="12"><h2>Masoterapia</h2></v-col>
           <curso
-            v-for="(curso, i) in cursoBuscar"
+            v-for="(curso, i) in catCurso('masoterapia')"
+            :key="i"
+            :titulo="curso.name"
+            :categoria="curso.categories"
+            :imagen="curso.featured_image_url"
+            :idCurso="curso.id"
+            :slug="curso.slug"
+          ></curso>
+        </v-row>
+        <v-row>
+          <v-col cols="12"><h2>Salud</h2></v-col>
+          <curso
+            v-for="(curso, i) in catCurso('salud-general')"
+            :key="i"
+            :titulo="curso.name"
+            :categoria="curso.categories"
+            :imagen="curso.featured_image_url"
+            :idCurso="curso.id"
+            :slug="curso.slug"
+          ></curso>
+        </v-row>
+        <v-row>
+          <v-col cols="12"><h2>Kinesiología</h2></v-col>
+          <curso
+            v-for="(curso, i) in catCurso('kinesiologia')"
+            :key="i"
+            :titulo="curso.name"
+            :categoria="curso.categories"
+            :imagen="curso.featured_image_url"
+            :idCurso="curso.id"
+            :slug="curso.slug"
+          ></curso>
+        </v-row>
+        <v-row>
+          <v-col cols="12"><h2>Diplomados</h2></v-col>
+          <curso
+            v-for="(curso, i) in catCurso('diplomado-salud')"
             :key="i"
             :titulo="curso.name"
             :categoria="curso.categories"
@@ -70,6 +57,17 @@
           ></curso>
         </v-row>
       </div>
+      <v-row v-else>
+        <curso
+          v-for="(curso, i) in cursoBuscar"
+          :key="i"
+          :titulo="curso.name"
+          :categoria="curso.categories"
+          :imagen="curso.featured_image_url"
+          :idCurso="curso.id"
+          :slug="curso.slug"
+        ></curso>
+      </v-row>
     </div>
   </div>
 </template>

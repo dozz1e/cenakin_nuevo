@@ -1,12 +1,12 @@
 <template>
-  <div v-if="soloCurso != null" id="cursoPagina">
+  <div v-if="soloCurso" id="cursoPagina">
     <v-row>
       <v-card class="curso__item" width="100%" height="600" dark>
         <div class="curso__item-capa">
           <v-img
             sizes="(max-width: 1904px) 100vw, 1904px"
-            :src="`/images/cursos/${soloCurso.slug}/1.${extension}`"
-            :srcset="`/images/cursos/${soloCurso.slug}/1@1x.${extension} 960w, /images/cursos/${soloCurso.slug}/1@2x.${extension} 1264w, /images/cursos/${soloCurso.slug}/1@3x.${extension} 1904w`"
+            :src="`/images/cursos/${soloCurso.slug}/1.webp`"
+            :srcset="`/images/cursos/${soloCurso.slug}/1@1x.webp 960w, /images/cursos/${soloCurso.slug}/1@2x.webp 1264w, /images/cursos/${soloCurso.slug}/1@3x.webp 1904w`"
             alt="soloCurso.name"
             gradient="to bottom, rgba(4,157,252,.3), rgba(0,0,0,.5)"
             width="100%"
@@ -68,8 +68,8 @@
                     network="facebook"
                     key="facebook"
                     :url="`https://cenakin.cl/cursos/${$route.params.id}`"
-                    :title="soloCurso.yoast_head_json.og_title"
-                    :description="soloCurso.yoast_head_json.description"
+                    :title="titleCurso"
+                    :description="descripcionCurso"
                     quote="Cenakin OTEC Cursos Viña del Mar, Chile."
                     hashtags="cursos,otec"
                     twitterUser="Dozz1e"
@@ -86,8 +86,8 @@
                     network="whatsapp"
                     key="whatsapp"
                     :url="`https://cenakin.cl/cursos/${$route.params.id}`"
-                    :title="soloCurso.yoast_head_json.og_title"
-                    :description="soloCurso.yoast_head_json.description"
+                    :title="titleCurso"
+                    :description="descripcionCurso"
                     quote="Cenakin OTEC Cursos Viña del Mar, Chile."
                     hashtags="cursos,otec"
                     twitterUser="Dozz1e"
@@ -100,11 +100,6 @@
                       class="ml-3"
                     ></v-img>
                   </share-network>
-                  <!-- <a
-                    :href="`https://www.facebook.com/sharer/sharer.php?u=${$route.params.id}`"
-                    target="_blank"
-                    >Comparte en Facebook</a
-                  > -->
                 </div>
               </v-col>
             </v-row>
@@ -127,8 +122,8 @@
             <v-card-text v-html="soloCurso.description"></v-card-text>
           </v-card>
           <v-img
-            :src="`/images/cursos/${soloCurso.slug}/2.${extension}`"
-            :srcset="`/images/cursos/${soloCurso.slug}/2@1x.${extension} 600w, /images/cursos/${soloCurso.slug}/2@2x.${extension} 960w, /images/cursos/${soloCurso.slug}/2@3x.${extension} 1264w`"
+            :src="`/images/cursos/${soloCurso.slug}/2.webp`"
+            :srcset="`/images/cursos/${soloCurso.slug}/2@1x.webp 600w, /images/cursos/${soloCurso.slug}/2@2x.webp 960w, /images/cursos/${soloCurso.slug}/2@3x.webp 1264w`"
             :alt="`${soloCurso.name} Subportada`"
             width="100%"
             height="300"
@@ -142,63 +137,70 @@
             <v-row>
               <v-col cols="3" class="pa-0"></v-col>
               <v-col cols="9" class="pt-0">
-                <v-card-text v-html="soloCurso.objetivo"></v-card-text>
+                <v-card-text v-html="soloCurso.acf.objetivo"></v-card-text>
               </v-col>
             </v-row>
           </v-card>
-          <div class="extra-titulo" v-if="'' != soloCurso.titulo_3">
-            <h3>¿Qué Lograrás?</h3>
+
+          <div v-if="soloCurso.acf.titulo_3">
+            <div class="extra-titulo">
+              <h3>¿Qué Lograrás?</h3>
+            </div>
+            <v-img
+              :src="`/images/cursos/${soloCurso.slug}/3.webp`"
+              :srcset="`/images/cursos/${soloCurso.slug}/3@1x.webp 600w, /images/cursos/${soloCurso.slug}/3@2x.webp 960w, /images/cursos/${soloCurso.slug}/3@3x.webp 1264w`"
+              :alt="soloCurso.acf.titulo_3"
+              width="100%"
+              height="300"
+            >
+              <span class="d-flex align-center">{{ soloCurso.acf.titulo_3 }}</span>
+            </v-img>
           </div>
-          <v-img
-            :src="`/images/cursos/${soloCurso.slug}/3.${extension}`"
-            :srcset="`/images/cursos/${soloCurso.slug}/3@1x.${extension} 600w, /images/cursos/${soloCurso.slug}/3@2x.${extension} 960w, /images/cursos/${soloCurso.slug}/3@3x.${extension} 1264w`"
-            :alt="soloCurso.titulo_3"
-            width="100%"
-            height="300"
-            v-if="'' != soloCurso.titulo_3"
-          >
-            <span class="d-flex align-center">{{ soloCurso.titulo_3 }}</span>
-          </v-img>
-          <v-img
-            :src="`/images/cursos/${soloCurso.slug}/4.${extension}`"
-            :srcset="`/images/cursos/${soloCurso.slug}/4@1x.${extension} 600w, /images/cursos/${soloCurso.slug}/4@2x.${extension} 960w, /images/cursos/${soloCurso.slug}/4@3x.${extension} 1264w`"
-            :alt="soloCurso.titulo_4"
-            width="100%"
-            height="300"
-            v-if="'' != soloCurso.titulo_4"
-          >
-            <span class="d-flex align-center">{{ soloCurso.titulo_4 }}</span>
-          </v-img>
-          <v-img
-            :src="`/images/cursos/${soloCurso.slug}/5.${extension}`"
-            :srcset="`/images/cursos/${soloCurso.slug}/5@1x.${extension} 600w, /images/cursos/${soloCurso.slug}/5@2x.${extension} 960w, /images/cursos/${soloCurso.slug}/5@3x.${extension} 1264w`"
-            :alt="soloCurso.titulo_5"
-            width="100%"
-            height="300"
-            v-if="'' != soloCurso.titulo_5"
-          >
-            <span class="d-flex align-center">{{ soloCurso.titulo_5 }}</span>
-          </v-img>
-          <v-img
-            :src="`/images/cursos/${soloCurso.slug}/6.${extension}`"
-            :srcset="`/images/cursos/${soloCurso.slug}/6@1x.${extension} 600w, /images/cursos/${soloCurso.slug}/6@2x.${extension} 960w, /images/cursos/${soloCurso.slug}/6@3x.${extension} 1264w`"
-            :alt="soloCurso.titulo_6"
-            width="100%"
-            height="300"
-            v-if="'' != soloCurso.titulo_6"
-          >
-            <span class="d-flex align-center">{{ soloCurso.titulo_6 }}</span>
-          </v-img>
-          <v-img
-            :src="`/images/cursos/${soloCurso.slug}/7.${extension}`"
-            :srcset="`/images/cursos/${soloCurso.slug}/7@1x.${extension} 600w, /images/cursos/${soloCurso.slug}/7@2x.${extension} 960w, /images/cursos/${soloCurso.slug}/7@3x.${extension} 1264w`"
-            :alt="soloCurso.titulo_7"
-            width="100%"
-            height="300"
-            v-if="'' != soloCurso.titulo_7"
-          >
-            <span class="d-flex align-center">{{ soloCurso.titulo_7 }}</span>
-          </v-img>
+          <div v-if="soloCurso.acf.titulo_4">
+            <v-img
+              :src="`/images/cursos/${soloCurso.slug}/4.webp`"
+              :srcset="`/images/cursos/${soloCurso.slug}/4@1x.webp 600w, /images/cursos/${soloCurso.slug}/4@2x.webp 960w, /images/cursos/${soloCurso.slug}/4@3x.webp 1264w`"
+              :alt="soloCurso.acf.titulo_4"
+              width="100%"
+              height="300"
+            >
+              <span class="d-flex align-center">{{ soloCurso.acf.titulo_4 }}</span>
+            </v-img>
+          </div>
+          <div v-if="soloCurso.acf.titulo_5">
+            <v-img
+              :src="`/images/cursos/${soloCurso.slug}/5.webp`"
+              :srcset="`/images/cursos/${soloCurso.slug}/5@1x.webp 600w, /images/cursos/${soloCurso.slug}/5@2x.webp 960w, /images/cursos/${soloCurso.slug}/5@3x.webp 1264w`"
+              :alt="soloCurso.acf.titulo_5"
+              width="100%"
+              height="300"
+            >
+              <span class="d-flex align-center">{{ soloCurso.acf.titulo_5 }}</span>
+            </v-img>
+          </div>
+          <div v-if="soloCurso.acf.titulo_6">
+            <v-img
+              :src="`/images/cursos/${soloCurso.slug}/6.webp`"
+              :srcset="`/images/cursos/${soloCurso.slug}/6@1x.webp 600w, /images/cursos/${soloCurso.slug}/6@2x.webp 960w, /images/cursos/${soloCurso.slug}/6@3x.webp 1264w`"
+              :alt="soloCurso.acf.titulo_6"
+              width="100%"
+              height="300"
+            >
+              <span class="d-flex align-center">{{ soloCurso.acf.titulo_6 }}</span>
+            </v-img>
+          </div>
+          <div v-if="soloCurso.acf.titulo_7">
+            <v-img
+              :src="`/images/cursos/${soloCurso.slug}/7.webp`"
+              :srcset="`/images/cursos/${soloCurso.slug}/7@1x.webp 600w, /images/cursos/${soloCurso.slug}/7@2x.webp 960w, /images/cursos/${soloCurso.slug}/7@3x.webp 1264w`"
+              :alt="soloCurso.acf.titulo_7"
+              width="100%"
+              height="300"
+            >
+              <span class="d-flex align-center">{{ soloCurso.acf.titulo_7 }}</span>
+            </v-img>
+          </div>
+
           <v-card class="pa-5" tile>
             <v-row>
               <v-col cols="8" class="pb-0">
@@ -209,7 +211,7 @@
               <v-col cols="3"></v-col>
               <v-col cols="9" class="pt-0">
                 <v-card-text
-                  v-html="soloCurso.incluye"
+                  v-html="soloCurso.acf.incluye"
                   class="pt-0"
                 ></v-card-text>
               </v-col>
@@ -225,7 +227,7 @@
               <v-col cols="3"></v-col>
               <v-col cols="9">
                 <v-card-text
-                  v-html="soloCurso.formato"
+                  v-html="soloCurso.acf.formato"
                   class="pt-0"
                 ></v-card-text>
               </v-col>
@@ -234,11 +236,11 @@
               <v-col cols="12" sm="8" class="pt-0">
                 <v-card-text class="fecha">
                   Fecha de Inicio:
-                  {{ fecha(soloCurso.hora_inicio, soloCurso.fecha_inicio) }}
-                  <div v-if="'' != soloCurso.fecha_termino">
+                  {{ `${soloCurso.acf.hora_inicio} ${soloCurso.acf.fecha_inicio}` }}
+                  <div v-if="soloCurso.acf.fecha_termino">
                     <br />
                     Fecha de Termino:
-                    {{ fecha(soloCurso.hora_termino, soloCurso.fecha_termino) }}
+                    {{ `${soloCurso.acf.hora_termino} ${soloCurso.acf.fecha_termino}` }}
                   </div>
                 </v-card-text>
               </v-col>
@@ -254,7 +256,7 @@
               <v-col cols="3"></v-col>
               <v-col cols="9" class="pt-0">
                 <v-card-text
-                  v-html="soloCurso.dirigido"
+                  v-html="soloCurso.acf.dirigido"
                   class="pt-0"
                 ></v-card-text>
               </v-col>
@@ -270,7 +272,7 @@
               <v-col cols="3"></v-col>
               <v-col cols="9" class="pt-0">
                 <v-card-text
-                  v-html="soloCurso.plan_estudios"
+                  v-html="soloCurso.acf.plan_estudios"
                   class="pt-0"
                 ></v-card-text>
               </v-col>
@@ -279,7 +281,7 @@
           <v-card class="pa-5" tile>
             <v-card-title> NUESTROS DOCENTES </v-card-title>
             <v-card-text
-              v-for="(profe, index) in soloCurso.profesores"
+              v-for="(profe, index) in soloCurso.acf.profesores"
               :key="index"
               v-html="profe"
             >
@@ -293,7 +295,7 @@
                   <h2 class="mb-3">
                     Arancel total {{ moneda(soloCurso.regular_price) }}
                   </h2>
-                  <div v-if="null != soloCurso.date_on_sale_to" class="mensaje">
+                  <div v-if="soloCurso.date_on_sale_to" class="mensaje">
                     Arancel con pago Webpay {{ moneda(soloCurso.price) }} CLP.
                     Válido hasta el
                     {{ fecha2(soloCurso.date_on_sale_to) }}
@@ -319,7 +321,7 @@
               <v-card color="#fff" tile>
                 <header class="py-2 px-3">Medios de Pago</header>
                 <v-card-text class="pa-5">
-                  <span v-html="soloCurso.medios_pago"></span>
+                  <span v-html="soloCurso.acf.medios_pago"></span>
                 </v-card-text>
               </v-card>
             </v-col>
@@ -342,15 +344,11 @@
                   Arancel total:
                   {{ moneda(soloCurso.regular_price) }} CLP
                 </h2>
-                <span v-if="null != soloCurso.date_on_sale_to" class="mb-3"
+                <span v-if="soloCurso.date_on_sale_to" class="mb-3"
                   >Arancel pago Webpay válido hasta el
                   {{ fecha2(soloCurso.date_on_sale_to) }}
                   <b>{{ moneda(soloCurso.price) }}</b></span
                 >
-                <span class="mb-3 text-center">
-                  Para finalizar la compra se redireccionará a
-                  cenakinaulaonline.com
-                </span>
                 <v-btn
                   x-large
                   color="primary"
@@ -399,7 +397,7 @@ export default {
           content: `https://www.cenakin.cl/cursos/${this.$route.params.id}`,
         },
         { property: "og:title", content: this.soloCurso.name },
-        { property: "og:image", content: this.imagenCurso },
+        { property: "og:image", content: `https://www.cenakin.cl/images/cursos/${this.$route.params.id}/1.jpg` },
         { property: "og:description", content: this.descripcionCurso },
         {
           property: "twitter:title",
@@ -429,7 +427,7 @@ export default {
     this.quitarCurso();
   },
   computed: {
-    ...mapGetters("cursos", ["anchoVentana", "extension"]),
+    ...mapGetters("cursos", ["anchoVentana"]),
     subtitulo() {
       let aux = "CURSOS";
 
@@ -449,30 +447,31 @@ export default {
     titleCurso() {
       let title = "";
       if (this.soloCurso) {
-        title = this.soloCurso.yoast_head_json.og_title;
+        title = `${this.soloCurso.name} - Cenakin OTEC` ;
       }
       return title;
     },
     descripcionCurso() {
       let descrip = "";
       if (this.soloCurso) {
-        descrip = this.soloCurso.yoast_head_json.description;
+        descrip = this.soloCurso.yoast_head_json.og_description;
       }
       return descrip;
     },
     imagenCurso() {
       let image = "";
       if (this.soloCurso) {
-        image = `https://www.cenakin.cl/images/cursos/${this.soloCurso.slug}/1.jpg`;
+        image = `https://www.cenakin.cl/images/cursos/${this.soloCurso.slug}/1.webp`;
       }
       return image;
     },
   },
+
   methods: {
     ...mapActions("cursos", ["quitarCurso", "cambiarMenu"]),
     btnComprar(idCurso){
       fbq('track','AddToCart');
-      window.location.href = `https://cenakinaulaonline.com/carrito/?add-to-cart=${idCurso}`;
+      window.location.href = `https://cenakin.cl/otec/carrito/?add-to-cart=${idCurso}`;
     },
     favorito() {
       if ("mdi-heart" === this.iconoFavorito) {
@@ -552,25 +551,27 @@ export default {
       return name;
     },
     fecha(hora, dia) {
-      let data = "";
-      let fec = "";
-      if ("" != hora) {
-        data = hora + " ";
-      }
-      if (10 > parseInt(dia.slice(6, 8))) fec = dia.slice(7, 8);
-      else fec = dia.slice(6, 8);
-      data += fec + " de " + this.mes(dia.slice(4, 6)) + " " + dia.slice(0, 4);
-      return data;
+      console.log(dia);
+      // let data = "";
+      // let fec = "";
+      // if ("" != hora) {
+      //   data = hora + " ";
+      // }
+      // if (10 > parseInt(dia.slice(6, 8))) fec = dia.slice(7, 8);
+      // else fec = dia.slice(6, 8);
+      // data += fec + " de " + this.mes(dia.slice(4, 6)) + " " + dia.slice(0, 4);
+      return hora;
     },
     fecha2(dia) {
-      let anno = dia.slice(0, 4);
-      let mes = dia.slice(5, 7);
-      let da = "";
+      // let anno = dia.slice(0, 4);
+      // let mes = dia.slice(5, 7);
+      // let da = "";
 
-      if (10 > dia.slice(8, 10)) da = dia.slice(9, 10);
-      else da = dia.slice(8, 10);
+      // if (10 > dia.slice(8, 10)) da = dia.slice(9, 10);
+      // else da = dia.slice(8, 10);
 
-      return da + " de " + this.mes(mes) + " " + anno;
+      // return da + " de " + this.mes(mes) + " " + anno;
+      return dia;
     },
     mes(fecha) {
       let fec = "";
@@ -615,10 +616,11 @@ export default {
       return fec;
     },
   },
+
   async asyncData(context) {
     return await context.$axios
       .get(
-        `https://cenakinaulaonline.com/wp-json/wc/v3/products?slug=${context.params.id}&consumer_key=ck_8d87b7db23fc44e5cd9c9f1754c8ab64bf929840&consumer_secret=cs_4c5d058b5bf2d8080573c400de1ea5590d957499`
+        `https://cenakin.cl/otec/wp-json/wc/v3/products?slug=${context.params.id}&consumer_key=ck_a62303a495e142cc35dbb14ca13884a4a8ae8b4e&consumer_secret=cs_49e0b6468aa1af67c931ed88fc59bfdacb5395ae`
       )
       .then((result) => {
         return {

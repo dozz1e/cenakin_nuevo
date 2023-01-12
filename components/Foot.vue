@@ -15,7 +15,7 @@
               <div class="d-flex">
                 <div class="d-flex flex-column justify-center mr-5">
                   <img src="/images/logos/nch.png" width="120" height="170" alt="NCH"/>
-                  <span class="text-center mt-3">OC-CER629256</span>
+                  <span class="text-center mt-3">OC-CER726261</span>
                 </div>
                 <div class="d-flex flex-column justify-center">
                   <img src="/images/logos/sence.png" width="120" height="170" alt="Sence" />
@@ -37,7 +37,7 @@
     </v-container>
     <v-footer class="d-flex justify-center" color="#121212">
       <span>
-          &copy; CENAKIN S.p.A - <a href="https://cenakinaulaonline.com/terminos-y-condiciones/">Términos y Condiciones</a> - <a href="#">Política de Privacidad</a> - <a href="#">Política de Cookies</a>
+          &copy; CENAKIN S.p.A - <a href="https://cenakin.cl/otec/terminos-y-condiciones/">Términos y Condiciones</a> - <a href="#">Política de Privacidad</a> - <a href="#">Política de Cookies</a>
         </span>
     </v-footer>
   </div>

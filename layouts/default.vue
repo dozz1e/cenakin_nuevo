@@ -45,13 +45,7 @@
       clipped-left
       flat
       hide-on-scroll
-      :color="
-        0 < offsetTop && estadoMenu
-          ? '#272727'
-          : estadoMenu
-          ? 'transparent'
-          : 'white'
-      "
+      :color=" 0 < offsetTop && estadoMenu ? '#272727' : estadoMenu ? 'transparent': 'white'"
     >
       <v-container class="d-flex align-center">
         <v-app-bar-nav-icon

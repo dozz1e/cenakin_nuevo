@@ -1,11 +1,11 @@
-const base = "https://cenakinaulaonline.com/wp-json/wc/v3/";
+const base = "https://cenakin.cl/otec/wp-json/wc/v3/";
 const kis =
-  "&consumer_key=ck_8d87b7db23fc44e5cd9c9f1754c8ab64bf929840&consumer_secret=cs_4c5d058b5bf2d8080573c400de1ea5590d957499";
+  "&consumer_key=ck_a62303a495e142cc35dbb14ca13884a4a8ae8b4e&consumer_secret=cs_49e0b6468aa1af67c931ed88fc59bfdacb5395ae";
 
 export default {
   async listaCursos({ commit }) {
     const cursos = await this.$axios.$get(
-      `${base}products?category=38&per_page=50${kis}`
+      `${base}products?category=22&per_page=50${kis}`
     );
     commit("SET_CURSOS", cursos);
   },
