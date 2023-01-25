@@ -4,12 +4,7 @@
     <v-container>
       <cursosCat></cursosCat>
     </v-container>
-    <marquesina
-      texto="empoderamiento.profesionalismo.expansión.liderazgo."
-    ></marquesina>
-    <v-container class="pb-0">
-      <faqComp></faqComp>
-    </v-container>
+    <marquesina texto="empoderamiento.profesionalismo.expansión.liderazgo."></marquesina>
     <contactoComp></contactoComp>
     <sociales></sociales>
   </div>
@@ -61,4 +56,5 @@ export default {
 </script>
 
 <style>
+
 </style>

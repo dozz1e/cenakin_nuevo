@@ -3,28 +3,17 @@
     <nuxt-link :to="`/cursos/${slug}`">
       <v-card class="mb-4 curso__item" dark height="250" max-width="400">
         <div class="cursoInfo d-flex flex-column align-start">
-          <v-img
-            :src="`/images/cursos/${slug}/1.${extension}`"
+          <v-img :src="`/images/cursos/${slug}/1.${extension}`"
             :srcset="`/images/cursos/${slug}/1@1x.${extension} 600w, /images/cursos/${slug}/1@2x.${extension} 960w, /images/cursos/${slug}/1@3x.${extension} 1264w`"
-            :alt="titulo"
-            gradient="to bottom, rgba(4,157,252,.3), rgba(0,0,0,.5)"
-            width="100%"
-            height="250"
-          >
+            :alt="titulo" gradient="to bottom, rgba(4,157,252,.3), rgba(0,0,0,.5)" width="100%" height="250">
             <v-card-title>
-              <img
-                src="/images/banner_cl.png"
-                alt="Banner Cenakin"
-                width="60"
-              />
+              <img src="/images/banner_cl.png" alt="Banner Cenakin" width="60" />
             </v-card-title>
             <v-card-actions class="pa-0 mx-4">
               <v-list-item two-line class="pa-0">
                 <v-list-item-content>
                   <v-list-item-subtitle>{{ subtitulo }}</v-list-item-subtitle>
-                  <v-list-item-title
-                    v-html="nombre(titulo)"
-                  ></v-list-item-title>
+                  <v-list-item-title v-html="nombre(titulo)"></v-list-item-title>
                 </v-list-item-content>
               </v-list-item>
             </v-card-actions>
@@ -47,7 +36,7 @@ export default {
       let aux = "CURSOS";
 
       this.categoria.forEach((cat) => {
-        if (40 === cat.id) {
+        if (23 === cat.id) {
           aux = "DIPLOMADO";
         }
         if (39 === cat.id) {
