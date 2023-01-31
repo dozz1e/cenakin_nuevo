@@ -8,65 +8,42 @@
         </v-row>
       </header>
       <div v-if="categoria === 'salud'">
-        <v-row>
-          <v-col cols="12"><h2>Masoterapia</h2></v-col>
-          <curso
-            v-for="(curso, i) in catCurso('masoterapia')"
-            :key="i"
-            :titulo="curso.name"
-            :categoria="curso.categories"
-            :imagen="curso.featured_image_url"
-            :idCurso="curso.id"
-            :slug="curso.slug"
-          ></curso>
+        <v-row v-if="catCurso('masoterapia')">
+          <v-col cols="12">
+            <h2>Masoterapia</h2>
+          </v-col>
+          <curso v-for="(curso, i) in catCurso('masoterapia')" :key="i" :titulo="curso.name"
+            :categoria="curso.categories" :imagen="curso.featured_image_url" :idCurso="curso.id" :slug="curso.slug">
+          </curso>
         </v-row>
-        <v-row>
-          <v-col cols="12"><h2>Salud</h2></v-col>
-          <curso
-            v-for="(curso, i) in catCurso('salud-general')"
-            :key="i"
-            :titulo="curso.name"
-            :categoria="curso.categories"
-            :imagen="curso.featured_image_url"
-            :idCurso="curso.id"
-            :slug="curso.slug"
-          ></curso>
+        <v-row v-if="catCurso('salud-general')">
+          <v-col cols="12">
+            <h2>Salud</h2>
+          </v-col>
+          <curso v-for="(curso, i) in catCurso('salud-general')" :key="i" :titulo="curso.name"
+            :categoria="curso.categories" :imagen="curso.featured_image_url" :idCurso="curso.id" :slug="curso.slug">
+          </curso>
         </v-row>
-        <v-row>
-          <v-col cols="12"><h2>Kinesiología</h2></v-col>
-          <curso
-            v-for="(curso, i) in catCurso('kinesiologia')"
-            :key="i"
-            :titulo="curso.name"
-            :categoria="curso.categories"
-            :imagen="curso.featured_image_url"
-            :idCurso="curso.id"
-            :slug="curso.slug"
-          ></curso>
+        <v-row v-if="catCurso('kinesiologia')">
+          <v-col cols="12">
+            <h2>Kinesiología</h2>
+          </v-col>
+          <curso v-for="(curso, i) in catCurso('kinesiologia')" :key="i" :titulo="curso.name"
+            :categoria="curso.categories" :imagen="curso.featured_image_url" :idCurso="curso.id" :slug="curso.slug">
+          </curso>
         </v-row>
-        <v-row>
-          <v-col cols="12"><h2>Diplomados</h2></v-col>
-          <curso
-            v-for="(curso, i) in catCurso('diplomado-salud')"
-            :key="i"
-            :titulo="curso.name"
-            :categoria="curso.categories"
-            :imagen="curso.featured_image_url"
-            :idCurso="curso.id"
-            :slug="curso.slug"
-          ></curso>
+        <v-row v-if="catCurso('diplomado-salud')">
+          <v-col cols="12">
+            <h2>Diplomados</h2>
+          </v-col>
+          <curso v-for="(curso, i) in catCurso('diplomado-salud')" :key="i" :titulo="curso.name"
+            :categoria="curso.categories" :imagen="curso.featured_image_url" :idCurso="curso.id" :slug="curso.slug">
+          </curso>
         </v-row>
       </div>
       <v-row v-else>
-        <curso
-          v-for="(curso, i) in cursoBuscar"
-          :key="i"
-          :titulo="curso.name"
-          :categoria="curso.categories"
-          :imagen="curso.featured_image_url"
-          :idCurso="curso.id"
-          :slug="curso.slug"
-        ></curso>
+        <curso v-for="(curso, i) in cursoBuscar" :key="i" :titulo="curso.name" :categoria="curso.categories"
+          :imagen="curso.featured_image_url" :idCurso="curso.id" :slug="curso.slug"></curso>
       </v-row>
     </div>
   </div>
@@ -108,7 +85,9 @@ export default {
           return cat.categories.some((ca) => cate === ca.slug);
         });
       }
-      return cates;
+      let aux = cates
+      if (0 == aux.length) aux = false
+      return aux;
     },
   },
 };
