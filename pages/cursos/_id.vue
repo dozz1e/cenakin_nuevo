@@ -3,26 +3,16 @@
     <v-row>
       <v-card class="curso__item" width="100%" height="600" dark>
         <div class="curso__item-capa">
-          <v-img
-            sizes="(max-width: 1904px) 100vw, 1904px"
-            :src="`/images/cursos/${soloCurso.slug}/1.webp`"
+          <v-img sizes="(max-width: 1904px) 100vw, 1904px" :src="`/images/cursos/${soloCurso.slug}/1.webp`"
             :srcset="`/images/cursos/${soloCurso.slug}/1@1x.webp 960w, /images/cursos/${soloCurso.slug}/1@2x.webp 1264w, /images/cursos/${soloCurso.slug}/1@3x.webp 1904w`"
-            alt="soloCurso.name"
-            gradient="to bottom, rgba(4,157,252,.3), rgba(0,0,0,.5)"
-            width="100%"
-            height="600"
-          >
+            alt="soloCurso.name" gradient="to bottom, rgba(4,157,252,.3), rgba(0,0,0,.5)" width="100%" height="600">
             <v-container class="pa-0">
               <v-card-actions class="pa-0 mx-4 align-end d-flex">
                 <v-list-item two-line class="pa-0">
                   <v-list-item-content>
                     <v-list-item-subtitle>{{ subtitulo }}</v-list-item-subtitle>
                     <v-list-item-title>
-                      <h1
-                        v-if="$vuetify.breakpoint.mobile"
-                        class="ml-3 mb-2"
-                        v-html="nombre(soloCurso.name)"
-                      ></h1>
+                      <h1 v-if="$vuetify.breakpoint.mobile" class="ml-3 mb-2" v-html="nombre(soloCurso.name)"></h1>
                       <h1 v-else class="mb-2" v-html="soloCurso.name"></h1>
                     </v-list-item-title>
                   </v-list-item-content>
@@ -40,76 +30,34 @@
             <v-row>
               <v-col cols="12" md="4">
                 <div class="d-flex justify-space-between">
-                  <v-btn
-                    color="primary"
-                    tile
-                    large
-                    class="btn-basico"
-                    :href="`/pdfs/${soloCurso.id}.pdf`"
-                    target="_blank"
-                    >DESCARGAR PROGRAMA</v-btn
-                  >
-                  <v-btn
-                    tile
-                    large
-                    @click="favorito()"
-                    v-if="$vuetify.breakpoint.mobile"
-                  >
+                  <v-btn color="primary" tile large class="btn-basico" :href="`/pdfs/${soloCurso.id}.pdf`"
+                    target="_blank">DESCARGAR PROGRAMA</v-btn>
+                  <v-btn tile large @click="favorito()" v-if="$vuetify.breakpoint.mobile">
                     <v-icon :style="iconoFavoritoStyle">{{
                       iconoFavorito
-                    }}</v-icon></v-btn
-                  >
+                    }}</v-icon></v-btn>
                 </div>
               </v-col>
               <v-col cols="12" md="8" class="d-flex justify-end">
                 <div id="compartir" class="d-flex align-center">
                   <h3>Compartir</h3>
-                  <share-network
-                    network="facebook"
-                    key="facebook"
-                    :url="`https://cenakin.cl/cursos/${$route.params.id}`"
-                    :title="titleCurso"
-                    :description="descripcionCurso"
-                    quote="Cenakin OTEC Cursos Viña del Mar, Chile."
-                    hashtags="cursos,otec"
-                    twitterUser="Dozz1e"
-                  >
-                    <v-img
-                      src="/images/social/facebook.png"
-                      alt="Facebook"
-                      height="45"
-                      width="45"
-                      class="ml-3"
-                    ></v-img>
+                  <share-network network="facebook" key="facebook"
+                    :url="`https://cenakin.cl/cursos/${$route.params.id}`" :title="titleCurso"
+                    :description="descripcionCurso" quote="Cenakin OTEC Cursos Viña del Mar, Chile."
+                    hashtags="cursos,otec" twitterUser="Dozz1e">
+                    <v-img src="/images/social/facebook.png" alt="Facebook" height="45" width="45" class="ml-3"></v-img>
                   </share-network>
-                  <share-network
-                    network="whatsapp"
-                    key="whatsapp"
-                    :url="`https://cenakin.cl/cursos/${$route.params.id}`"
-                    :title="titleCurso"
-                    :description="descripcionCurso"
-                    quote="Cenakin OTEC Cursos Viña del Mar, Chile."
-                    hashtags="cursos,otec"
-                    twitterUser="Dozz1e"
-                  >
-                    <v-img
-                      src="/images/social/whatsapp.png"
-                      alt="Whatsapp"
-                      height="45"
-                      width="45"
-                      class="ml-3"
-                    ></v-img>
+                  <share-network network="whatsapp" key="whatsapp"
+                    :url="`https://cenakin.cl/cursos/${$route.params.id}`" :title="titleCurso"
+                    :description="descripcionCurso" quote="Cenakin OTEC Cursos Viña del Mar, Chile."
+                    hashtags="cursos,otec" twitterUser="Dozz1e">
+                    <v-img src="/images/social/whatsapp.png" alt="Whatsapp" height="45" width="45" class="ml-3"></v-img>
                   </share-network>
                 </div>
               </v-col>
             </v-row>
           </v-col>
-          <v-col
-            cols="12"
-            md="4"
-            class="d-flex justify-end"
-            v-if="!$vuetify.breakpoint.mobile"
-          >
+          <v-col cols="12" md="4" class="d-flex justify-end" v-if="!$vuetify.breakpoint.mobile">
             <v-btn tile large @click="favorito()">
               <v-icon :style="iconoFavoritoStyle">{{ iconoFavorito }} </v-icon>
             </v-btn>
@@ -121,13 +69,9 @@
           <v-card class="pa-5">
             <v-card-text v-html="soloCurso.description"></v-card-text>
           </v-card>
-          <v-img
-            :src="`/images/cursos/${soloCurso.slug}/2.webp`"
+          <v-img :src="`/images/cursos/${soloCurso.slug}/2.webp`"
             :srcset="`/images/cursos/${soloCurso.slug}/2@1x.webp 600w, /images/cursos/${soloCurso.slug}/2@2x.webp 960w, /images/cursos/${soloCurso.slug}/2@3x.webp 1264w`"
-            :alt="`${soloCurso.name} Subportada`"
-            width="100%"
-            height="300"
-          ></v-img>
+            :alt="`${soloCurso.name} Subportada`" width="100%" height="300"></v-img>
           <v-card class="pa-5">
             <v-row>
               <v-col cols="8" class="pb-0">
@@ -146,57 +90,37 @@
             <div class="extra-titulo">
               <h3>¿Qué Lograrás?</h3>
             </div>
-            <v-img
-              :src="`/images/cursos/${soloCurso.slug}/3.webp`"
+            <v-img :src="`/images/cursos/${soloCurso.slug}/3.webp`"
               :srcset="`/images/cursos/${soloCurso.slug}/3@1x.webp 600w, /images/cursos/${soloCurso.slug}/3@2x.webp 960w, /images/cursos/${soloCurso.slug}/3@3x.webp 1264w`"
-              :alt="soloCurso.acf.titulo_3"
-              width="100%"
-              height="300"
-            >
+              :alt="soloCurso.acf.titulo_3" width="100%" height="300">
               <span class="d-flex align-center">{{ soloCurso.acf.titulo_3 }}</span>
             </v-img>
           </div>
           <div v-if="soloCurso.acf.titulo_4">
-            <v-img
-              :src="`/images/cursos/${soloCurso.slug}/4.webp`"
+            <v-img :src="`/images/cursos/${soloCurso.slug}/4.webp`"
               :srcset="`/images/cursos/${soloCurso.slug}/4@1x.webp 600w, /images/cursos/${soloCurso.slug}/4@2x.webp 960w, /images/cursos/${soloCurso.slug}/4@3x.webp 1264w`"
-              :alt="soloCurso.acf.titulo_4"
-              width="100%"
-              height="300"
-            >
+              :alt="soloCurso.acf.titulo_4" width="100%" height="300">
               <span class="d-flex align-center">{{ soloCurso.acf.titulo_4 }}</span>
             </v-img>
           </div>
           <div v-if="soloCurso.acf.titulo_5">
-            <v-img
-              :src="`/images/cursos/${soloCurso.slug}/5.webp`"
+            <v-img :src="`/images/cursos/${soloCurso.slug}/5.webp`"
               :srcset="`/images/cursos/${soloCurso.slug}/5@1x.webp 600w, /images/cursos/${soloCurso.slug}/5@2x.webp 960w, /images/cursos/${soloCurso.slug}/5@3x.webp 1264w`"
-              :alt="soloCurso.acf.titulo_5"
-              width="100%"
-              height="300"
-            >
+              :alt="soloCurso.acf.titulo_5" width="100%" height="300">
               <span class="d-flex align-center">{{ soloCurso.acf.titulo_5 }}</span>
             </v-img>
           </div>
           <div v-if="soloCurso.acf.titulo_6">
-            <v-img
-              :src="`/images/cursos/${soloCurso.slug}/6.webp`"
+            <v-img :src="`/images/cursos/${soloCurso.slug}/6.webp`"
               :srcset="`/images/cursos/${soloCurso.slug}/6@1x.webp 600w, /images/cursos/${soloCurso.slug}/6@2x.webp 960w, /images/cursos/${soloCurso.slug}/6@3x.webp 1264w`"
-              :alt="soloCurso.acf.titulo_6"
-              width="100%"
-              height="300"
-            >
+              :alt="soloCurso.acf.titulo_6" width="100%" height="300">
               <span class="d-flex align-center">{{ soloCurso.acf.titulo_6 }}</span>
             </v-img>
           </div>
           <div v-if="soloCurso.acf.titulo_7">
-            <v-img
-              :src="`/images/cursos/${soloCurso.slug}/7.webp`"
+            <v-img :src="`/images/cursos/${soloCurso.slug}/7.webp`"
               :srcset="`/images/cursos/${soloCurso.slug}/7@1x.webp 600w, /images/cursos/${soloCurso.slug}/7@2x.webp 960w, /images/cursos/${soloCurso.slug}/7@3x.webp 1264w`"
-              :alt="soloCurso.acf.titulo_7"
-              width="100%"
-              height="300"
-            >
+              :alt="soloCurso.acf.titulo_7" width="100%" height="300">
               <span class="d-flex align-center">{{ soloCurso.acf.titulo_7 }}</span>
             </v-img>
           </div>
@@ -210,10 +134,7 @@
             <v-row>
               <v-col cols="3"></v-col>
               <v-col cols="9" class="pt-0">
-                <v-card-text
-                  v-html="soloCurso.acf.incluye"
-                  class="pt-0"
-                ></v-card-text>
+                <v-card-text v-html="soloCurso.acf.incluye" class="pt-0"></v-card-text>
               </v-col>
             </v-row>
           </v-card>
@@ -226,10 +147,7 @@
             <v-row>
               <v-col cols="3"></v-col>
               <v-col cols="9">
-                <v-card-text
-                  v-html="soloCurso.acf.formato"
-                  class="pt-0"
-                ></v-card-text>
+                <v-card-text v-html="soloCurso.acf.formato" class="pt-0"></v-card-text>
               </v-col>
             </v-row>
             <v-row>
@@ -255,10 +173,7 @@
             <v-row>
               <v-col cols="3"></v-col>
               <v-col cols="9" class="pt-0">
-                <v-card-text
-                  v-html="soloCurso.acf.dirigido"
-                  class="pt-0"
-                ></v-card-text>
+                <v-card-text v-html="soloCurso.acf.dirigido" class="pt-0"></v-card-text>
               </v-col>
             </v-row>
           </v-card>
@@ -271,20 +186,13 @@
             <v-row>
               <v-col cols="3"></v-col>
               <v-col cols="9" class="pt-0">
-                <v-card-text
-                  v-html="soloCurso.acf.plan_estudios"
-                  class="pt-0"
-                ></v-card-text>
+                <v-card-text v-html="soloCurso.acf.plan_estudios" class="pt-0"></v-card-text>
               </v-col>
             </v-row>
           </v-card>
           <v-card class="pa-5" tile>
             <v-card-title> NUESTROS DOCENTES </v-card-title>
-            <v-card-text
-              v-for="(profe, index) in soloCurso.acf.profesores"
-              :key="index"
-              v-html="profe"
-            >
+            <v-card-text v-for="(profe, index) in soloCurso.acf.profesores" :key="index" v-html="profe">
             </v-card-text>
           </v-card>
           <v-row id="pago" class="py-10">
@@ -305,12 +213,7 @@
                   </div>
                   <v-divider></v-divider>
                   <v-card-actions class="px-0 pb-0">
-                    <v-btn
-                      x-large
-                      @click="btnComprar(soloCurso.id)"
-                      target="_blank"
-                      width="100%"
-                    >
+                    <v-btn x-large @click="btnComprar(soloCurso.id)" target="_blank" width="100%">
                       CONTRATAR CURSO
                     </v-btn>
                   </v-card-actions>
@@ -332,31 +235,23 @@
             <ContactoDatos></ContactoDatos>
           </v-card>
           <div class="pb-5 mt-2" v-if="$vuetify.breakpoint.lgAndUp">
-            <v-card
-              height="300"
-              class="d-flex flex-column align-center justify-center"
-              tile
-            >
-              <v-card-text
-                class="d-flex justify-center flex-column align-center"
-              >
-                <h2 class="mb-4">
+            <v-card height="300" class="d-flex flex-column align-center justify-center" tile>
+              <v-card-text class="d-flex justify-center flex-column align-center">
+                <h2 class="mb-4" v-if="soloCurso.regular_price == soloCurso.price">
                   Arancel total:
                   {{ moneda(soloCurso.regular_price) }} CLP
                 </h2>
-                <span v-if="soloCurso.date_on_sale_to" class="mb-3"
-                  >Arancel pago Webpay válido hasta el
-                  {{ fecha2(soloCurso.date_on_sale_to) }}
-                  <b>{{ moneda(soloCurso.price) }}</b></span
-                >
-                <v-btn
-                  x-large
-                  color="primary"
-                  class="btn-basico"
-                  @click="btnComprar(soloCurso.id)"
-                  target="_blank"
-                  >CONTRATAR CURSO</v-btn
-                >
+                <h2 v-else>
+                  Arancel total:
+                  {{ moneda(soloCurso.price) }} CLP
+                  <span>
+                    <small><del>{{ moneda(soloCurso.regular_price) }}</del></small>
+                  </span>
+                </h2>
+                <span v-if="soloCurso.date_on_sale_to" class="mb-3">Arancel pago Webpay válido hasta el
+                  {{ fecha2(soloCurso.date_on_sale_to) }}</span>
+                <v-btn x-large color="primary" class="btn-basico" @click="btnComprar(soloCurso.id)"
+                  target="_blank">CONTRATAR CURSO</v-btn>
               </v-card-text>
             </v-card>
           </div>
@@ -447,7 +342,7 @@ export default {
     titleCurso() {
       let title = "";
       if (this.soloCurso) {
-        title = `${this.soloCurso.name} - Cenakin OTEC` ;
+        title = `${this.soloCurso.name} - Cenakin OTEC`;
       }
       return title;
     },
@@ -469,8 +364,8 @@ export default {
 
   methods: {
     ...mapActions("cursos", ["quitarCurso", "cambiarMenu"]),
-    btnComprar(idCurso){
-      fbq('track','AddToCart');
+    btnComprar(idCurso) {
+      fbq('track', 'AddToCart');
       window.location.href = `https://cenakin.cl/otec/carrito/?add-to-cart=${idCurso}`;
     },
     favorito() {
@@ -479,7 +374,6 @@ export default {
       } else {
         this.iconoFavorito = "mdi-heart";
       }
-      // console.log(this.soloCurso);
     },
     moneda(valor) {
       const formatterPeso = new Intl.NumberFormat("es-CL", {
@@ -551,7 +445,7 @@ export default {
       return name;
     },
     fecha(hora, dia) {
-      console.log(dia);
+      // console.log(dia);
       // let data = "";
       // let fec = "";
       // if ("" != hora) {
@@ -563,14 +457,14 @@ export default {
       return hora;
     },
     fecha2(dia) {
-      // let anno = dia.slice(0, 4);
-      // let mes = dia.slice(5, 7);
-      // let da = "";
+      let anno = dia.slice(0, 4);
+      let mes = dia.slice(5, 7);
+      let da = "";
 
-      // if (10 > dia.slice(8, 10)) da = dia.slice(9, 10);
-      // else da = dia.slice(8, 10);
+      if (10 > dia.slice(8, 10)) da = dia.slice(9, 10);
+      else da = dia.slice(8, 10);
 
-      // return da + " de " + this.mes(mes) + " " + anno;
+      return da + " de " + this.mes(mes) + " " + anno;
       return dia;
     },
     mes(fecha) {

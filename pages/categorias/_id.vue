@@ -4,9 +4,7 @@
     <v-container class="pb-0">
       <cursosComp :categoria="this.$route.params.id"></cursosComp>
     </v-container>
-    <marquesina
-      texto="empoderamiento.profesionalismo.expansión.liderazgo."
-    ></marquesina>
+    <marquesina texto="empoderamiento.profesionalismo.expansión.liderazgo."></marquesina>
     <v-container class="pb-0">
       <faqComp></faqComp>
     </v-container>
