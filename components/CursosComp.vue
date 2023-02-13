@@ -8,6 +8,14 @@
         </v-row>
       </header>
       <div v-if="categoria === 'salud'">
+        <v-row v-if="catCurso('diplomado-salud')">
+          <v-col cols="12">
+            <h2>Diplomados</h2>
+          </v-col>
+          <curso v-for="(curso, i) in catCurso('diplomado-salud')" :key="i" :titulo="curso.name"
+            :categoria="curso.categories" :imagen="curso.featured_image_url" :idCurso="curso.id" :slug="curso.slug">
+          </curso>
+        </v-row>
         <v-row v-if="catCurso('masoterapia')">
           <v-col cols="12">
             <h2>Masoterapia</h2>
@@ -29,14 +37,6 @@
             <h2>Kinesiología</h2>
           </v-col>
           <curso v-for="(curso, i) in catCurso('kinesiologia')" :key="i" :titulo="curso.name"
-            :categoria="curso.categories" :imagen="curso.featured_image_url" :idCurso="curso.id" :slug="curso.slug">
-          </curso>
-        </v-row>
-        <v-row v-if="catCurso('diplomado-salud')">
-          <v-col cols="12">
-            <h2>Diplomados</h2>
-          </v-col>
-          <curso v-for="(curso, i) in catCurso('diplomado-salud')" :key="i" :titulo="curso.name"
             :categoria="curso.categories" :imagen="curso.featured_image_url" :idCurso="curso.id" :slug="curso.slug">
           </curso>
         </v-row>

@@ -2,7 +2,9 @@
   <div id="portada">
     <v-card class="ma-0 elevation-0">
       <div id="portadaInfo" class="d-flex flex-column align-start justify-end">
-        <v-img sizes="(max-width: 1904px) 100vw, 1904px" :src="`/images/portada/1.${extension}`" :srcset="`/images/portada/1_600.${extension} 960w, /images/portada/1_960.${extension} 1264w, /images/portada/1_1264.${extension} 1904w`" alt="Portada Cenakin" class="portada__image" height="600px" width="100%">
+        <v-img sizes="(max-width: 1904px) 100vw, 1904px" :src="`/images/portada/1.webp`"
+          :srcset="`/images/portada/1_600.webp 960w, /images/portada/1_960.webp 1264w, /images/portada/1_1264.webp 1904w`"
+          alt="Portada Cenakin" class="portada__image" height="600px" width="100%">
           <v-container>
             <v-row>
               <v-col cols="12" sm="1" v-if="$vuetify.breakpoint.smOnly"></v-col>
@@ -31,14 +33,14 @@ import { mapGetters, mapActions } from "vuex"
 export default {
   name: "Portada",
   data: () => ({}),
-  mounted(){
+  mounted() {
     this.cambiarMenu(true)
   },
   computed: {
-    ...mapGetters('cursos',['extension']),
+    ...mapGetters('cursos', ['extension']),
   },
   methods: {
-    ...mapActions('cursos',['cambiarMenu']),
+    ...mapActions('cursos', ['cambiarMenu']),
   },
   inject: ['theme']
 };

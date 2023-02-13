@@ -604,6 +604,8 @@ $color1: #049DFC
         padding-left: 24px !important
         li
           padding: 5px
+  .v-card__text p 
+    padding-bottom: 20px
   .v-image
     .v-responsive__content
       align-items: flex-end
