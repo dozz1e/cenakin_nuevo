@@ -25,7 +25,7 @@
 						</li>
 					</ul>
 					<div class="d-flex pt-3 justify-center">
-						CENAKIN 2020
+						CENAKIN 2023
 					</div>
 				</v-col>
 			</v-row>

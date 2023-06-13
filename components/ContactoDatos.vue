@@ -52,7 +52,7 @@ export default {
       {
         icono: "mdi-map-marker-outline",
         texto:
-          "Calle Limache 1724, oficina 503 ed. Contemporáneo, Viña del Mar",
+          "Calle Limache 1724, oficina 1102 ed. Contemporáneo, Viña del Mar",
       },
       {
         icono: "mdi-account-clock-outline",

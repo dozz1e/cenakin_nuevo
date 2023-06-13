@@ -1,5 +1,5 @@
 <template>
-  <v-speed-dial
+  <!-- <v-speed-dial
     v-model="fab"
     direction="top"
     :open-on-hover="true"
@@ -25,41 +25,24 @@
     >
       <v-icon>{{ social.icono }}</v-icon>
     </v-btn>
-  </v-speed-dial>
+  </v-speed-dial> -->
+  <div id="btn-social">
+    <v-btn
+      href="https://api.whatsapp.com/send?phone=56944871048"
+      target="_blank"
+      fab
+      dark
+      color="green"
+      x-large
+    >
+      <v-icon>mdi-whatsapp</v-icon>
+    </v-btn>
+  </div>
 </template>
 
 <script>
 export default {
   name: "Sociales",
-  data: () => ({
-    fab: false,
-    offsetTop: 0,
-    socials: [
-      {
-        ruta: "https://api.whatsapp.com/send?phone=56944871048",
-        icono: "mdi-whatsapp",
-        color: "green",
-      },
-      {
-        ruta: "https://www.facebook.com/cenakinchile",
-        icono: "mdi-facebook",
-        color: "indigo",
-      },
-      {
-        ruta: "https://www.instagram.com/cenakinchile/",
-        icono: "mdi-instagram",
-        color: "red",
-      },
-    ],
-  }),
-  mounted() {
-    window.addEventListener("scroll", this.onScroll);
-  },
-  methods: {
-    onScroll() {
-      this.offsetTop = window.scrollY;
-    },
-  },
 };
 </script>
 

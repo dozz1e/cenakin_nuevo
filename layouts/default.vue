@@ -76,6 +76,7 @@
 
     <v-main>
       <nuxt />
+      <sociales></sociales>
     </v-main>
   </v-app>
 </template>
@@ -83,6 +84,7 @@
 <script>
 import { mapActions, mapGetters } from "vuex";
 import Menu from "~/components/Menu";
+import Sociales from "~/components/Sociales";
 
 export default {
   data: () => ({
@@ -92,6 +94,7 @@ export default {
   }),
   components: {
     Menu,
+    Sociales,
   },
   beforeMount() {
     this.setIOS();

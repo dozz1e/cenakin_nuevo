@@ -11,7 +11,6 @@
       <faqComp></faqComp>
     </v-container>
     <contactoComp></contactoComp>
-    <sociales></sociales>
   </div>
 </template>
 
@@ -21,7 +20,6 @@ import Portada from "~/components/Portada";
 import CursosCat from "~/components/CursosCat";
 import FaqComp from "~/components/FaqComp";
 import ContactoComp from "~/components/ContactoComp";
-import Sociales from "~/components/Sociales";
 import Marquesina from "~/components/Marquesina";
 
 export default {
@@ -31,7 +29,6 @@ export default {
     FaqComp,
     Marquesina,
     ContactoComp,
-    Sociales,
   },
   head() {
     return {
