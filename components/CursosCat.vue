@@ -32,7 +32,7 @@
 export default {
   data: () => ({
     categorias: [
-      { nombre: "Salud", slug: "salud", color: "blue" },
+      { nombre: "Salud y Bienestar", slug: "salud", color: "blue" },
       { nombre: "Marketing", slug: "marketing", color: "#5E169F" },
       { nombre: "Ofimática", slug: "ofimatica", color: "green" },
     ],

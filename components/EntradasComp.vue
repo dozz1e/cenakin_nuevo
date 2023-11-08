@@ -3,9 +3,9 @@
     <v-row>
       <entrada v-for="(entr, i) in listadoEntradas" :key="i" :idEntrada='entr.id' :titulo='entr.title.rendered' :categoria='entr.categories' :slug='entr.slug' :corto="entr.excerpt.rendered"></entrada>
     </v-row>
-    <v-footer class="d-flex justify-center" v-if="1 < Math.ceil(listadoEntradas.length / 10)">
+    <!--<v-footer class="d-flex justify-center" v-if="1 <= Math.ceil(listadoEntradas.length / 10)">
       <v-pagination v-model="currPage" :length="Math.ceil(listadoEntradas.length / 10)" :total-visible="6"></v-pagination>
-    </v-footer>
+    </v-footer>-->
   </div>
 </template>
 

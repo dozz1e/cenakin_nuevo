@@ -1,6 +1,7 @@
 <template>
   <div v-if="soloEntrada != null" id="entrada">
     <v-card width="100%" height="600">
+
       <div class="entrada__portada">
         <v-img
           sizes="(max-width: 1904px) 100vw, 1904px"
@@ -58,7 +59,7 @@
             alt="Imagen contenido principal"
             width="100%"
           ></v-img>
-          <v-card flat>
+          <v-card flat v-if="soloEntrada.texto_2">
             <v-card-text v-html="soloEntrada.texto_2"></v-card-text>
           </v-card>
           <v-img
@@ -68,7 +69,7 @@
             alt="Imagen apoyo 1"
             width="100%"
           ></v-img>
-          <v-card flat>
+          <v-card flat v-if="soloEntrada.texto_3">
             <v-card-text v-html="soloEntrada.texto_3"></v-card-text>
           </v-card>
           <v-img
@@ -78,7 +79,7 @@
             alt="Imagen contenido principal"
             width="100%"
           ></v-img>
-          <v-card flat>
+          <v-card flat v-if="soloEntrada.texto_4">
             <v-card-text v-html="soloEntrada.texto_4"></v-card-text>
           </v-card>
           <v-img
@@ -88,7 +89,7 @@
             alt="Imagen contenido principal"
             width="100%"
           ></v-img>
-          <v-card flat>
+          <v-card flat v-if="soloEntrada.texto_5">
             <v-card-text v-html="soloEntrada.texto_5"></v-card-text>
           </v-card>
           <v-card

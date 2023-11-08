@@ -26,7 +26,7 @@
         </v-row>
         <v-row v-if="catCurso('salud-general')">
           <v-col cols="12">
-            <h2>Salud</h2>
+            <h2>Terapia Complementaria</h2>
           </v-col>
           <curso v-for="(curso, i) in catCurso('salud-general')" :key="i" :titulo="curso.name"
             :categoria="curso.categories" :imagen="curso.featured_image_url" :idCurso="curso.id" :slug="curso.slug">
