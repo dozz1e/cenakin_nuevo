@@ -2,8 +2,8 @@
   <div id="portada">
     <v-card class="ma-0 elevation-0">
       <div id="portadaInfo" class="d-flex flex-column align-start justify-end">
-        <v-img sizes="(max-width: 1904px) 100vw, 1904px" :src="`/images/portada/1.webp`"
-          :srcset="`/images/portada/1_600.webp 960w, /images/portada/1_960.webp 1264w, /images/portada/1_1264.webp 1904w`"
+        <v-img sizes="(max-width: 1904px) 100vw, 1904px" src="/images/portada/1.webp"
+          srcset="/images/portada/1_600.webp 960w, /images/portada/1_960.webp 1264w, /images/portada/1_1264.webp 1904w"
           alt="Portada Cenakin" class="portada__image" height="600px" width="100%">
           <v-container>
             <v-row>
@@ -24,7 +24,16 @@
         </v-img>
       </div>
     </v-card>
+<!--
+  <picture>
+    <source srcset="/images/portada/1_600.webp" media="(max-width: 800px)" />
+    <source srcset="/images/portada/1_900.webp" media="(max-width: 1330px)" />
+    <source srcset="/images/portada/1_1264.webp" media="(max-width: 1920px)" />
+    <img src="/images/portada/1.webp" alt="Black Friday" height="600"/>
+  </picture>>
+-->
   </div>
+
 </template>
 
 <script>
@@ -52,12 +61,23 @@ export default {
 #portada
   height: 600px
   margin: -64px 0 0
+  display: flex
+  justify-content: center
+  overflow: hidden
+  #link_portada
+    display: flex
+    justify-content: center
+    overflow: hidden
+    width: 100%
+  img
+    height: 600px
   .v-card
     background-position: center center
     background-repeat: no-repeat
     background-size: cover
     border-radius: none
     height: 600px
+    width: 100%
     .v-image
       background-position: top center
     .v-list-item__subtitle

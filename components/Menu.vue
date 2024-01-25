@@ -29,11 +29,11 @@ export default {
       },
       {
         nombre: "CURSOS",
-        ruta: "/cursos",
+        ruta: "/categorias/salud",
       },
       {
-        nombre: "BLOG",
-        ruta: "/blog",
+        nombre: "DIPLOMADO",
+        ruta: "/cursos/diplomado-masoterapia",
       },
       {
         nombre: "PREGUNTAS",

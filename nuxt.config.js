@@ -41,6 +41,10 @@ export default {
           "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
       },
       {
+        name: "keywords",
+        content: "Curso, masajes, viña del mar, valparaíso, masoterapia"
+      },
+      {
         property: "og:image:width",
         content: "1280",
       },

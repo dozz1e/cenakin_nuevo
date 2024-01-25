@@ -3,6 +3,7 @@
     <v-row>
       <v-card class="curso__item" width="100%" height="600" dark>
         <div class="curso__item-capa">
+          <!---
           <v-img sizes="(max-width: 1904px) 100vw, 1904px" :src="`/images/cursos/${soloCurso.slug}/1.webp`"
             :srcset="`/images/cursos/${soloCurso.slug}/1@1x.webp 960w, /images/cursos/${soloCurso.slug}/1@2x.webp 1264w, /images/cursos/${soloCurso.slug}/1@3x.webp 1904w`"
             alt="soloCurso.name" gradient="to bottom, rgba(4,157,252,.3), rgba(0,0,0,.5)" width="100%" height="600">
@@ -20,6 +21,26 @@
               </v-card-actions>
             </v-container>
           </v-img>
+          -->
+          <picture>
+            <source :srcset="`/images/cursos/${soloCurso.slug}/1@1x.webp`" media="(max-width: 800px)" />
+            <source :srcset="`/images/cursos/${soloCurso.slug}/1@2x.webp`" media="(max-width: 1330px)" />
+            <source :srcset="`/images/cursos/${soloCurso.slug}/1@3x.webp`" media="(max-width: 1920px)" />
+            <img :src="`/images/cursos/${soloCurso.slug}/1@3x.webp`" :alt="soloCurso.name"/>
+          </picture>
+          <v-container class="pa-0">
+              <v-card-actions class="pa-0 mx-4 align-end d-flex">
+                <v-list-item two-line class="pa-0">
+                  <v-list-item-content>
+                    <v-list-item-subtitle>{{ subtitulo }}</v-list-item-subtitle>
+                    <v-list-item-title>
+                      <h1 v-if="$vuetify.breakpoint.mobile" class="ml-3 mb-2" v-html="nombre(soloCurso.name)"></h1>
+                      <h1 v-else class="mb-2" v-html="soloCurso.name"></h1>
+                    </v-list-item-title>
+                  </v-list-item-content>
+                </v-list-item>
+              </v-card-actions>
+            </v-container>
         </div>
       </v-card>
     </v-row>
@@ -388,7 +409,7 @@ export default {
       let name = "";
       switch (aux.length) {
         case 1:
-          name = aux;
+          name = aux[0];
           break;
         case 2:
           name = aux[0] + "<br />" + aux[1];
@@ -534,6 +555,18 @@ $color1: #049DFC
 #cursoPagina
   margin-top: -64px !important
   overflow: hidden
+  picture
+    display: flex
+    justify-content: center
+    img
+      height: 600px
+  @media (min-width:1024px)
+    picture
+      img
+        position: absolute
+        top: -50%
+        height: auto
+        min-width: 100%
   h1
     font-size: 3rem
     line-height: 1
@@ -576,6 +609,7 @@ $color1: #049DFC
     margin-bottom: 20px
   .curso__item
     box-shadow: none
+    overflow: hidden
     .curso__item-capa
       height: 100%
       width: 100%
@@ -604,7 +638,7 @@ $color1: #049DFC
         padding-left: 24px !important
         li
           padding: 5px
-  .v-card__text p 
+  .v-card__text p
     padding-bottom: 20px
   .v-image
     .v-responsive__content
