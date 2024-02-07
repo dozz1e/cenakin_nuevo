@@ -9,7 +9,7 @@
       :dark="estadoMenu"
     >
       <header>
-        <v-img src="/images/banner_bl.png" alt="Banner Cenakin"></v-img>
+        <v-img src="/images/banner_bl.svg" alt="Banner Cenakin"></v-img>
         <v-spacer></v-spacer>
         <div id="cerrarMobile" @click="drawer = false">
           <v-icon>mdi-close</v-icon>
@@ -45,7 +45,13 @@
       clipped-left
       flat
       hide-on-scroll
-      :color=" 0 < offsetTop && estadoMenu ? '#272727' : estadoMenu ? 'transparent': 'white'"
+      :color="
+        0 < offsetTop && estadoMenu
+          ? '#272727'
+          : estadoMenu
+          ? 'transparent'
+          : 'white'
+      "
     >
       <v-container class="d-flex align-center">
         <v-app-bar-nav-icon
@@ -59,7 +65,7 @@
         <v-toolbar-title>
           <n-link to="/">
             <v-img
-              src="/images/banner_cl.png"
+              src="/images/banner_cl.svg"
               alt="Banner Cenakin"
               width="150"
             ></v-img>
@@ -203,4 +209,3 @@ ol, ul
   text-shadow: 1px 1px 1px black
   width: 15rem
 </style>
-

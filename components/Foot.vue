@@ -2,21 +2,11 @@
   <div id="footer">
     <v-container class="pt-0">
       <v-row class="py-10">
-        <v-col
-          cols="12"
-          sm="4"
-          class="py-0 d-flex justify-center align-center mb-10"
-        >
-          <img src="/images/banner_cl.png" height="80" />
+        <v-col cols="12" sm="4" class="py-0 d-flex justify-center align-center">
+          <img src="/images/banner.svg" height="120" />
         </v-col>
         <v-col cols="12" sm="4" class="py-0">
           <div class="d-flex">
-            <div
-              class="d-flex flex-column justify-center pr-5 mr-5 text-center"
-            >
-              <p><b>OTEC Acreditada</b></p>
-              <span class="mt-3 text-center">Resolución Número 19606</span>
-            </div>
             <div class="d-flex flex-column justify-center mr-5">
               <img
                 src="/images/logos/nch.png"
