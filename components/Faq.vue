@@ -31,7 +31,7 @@ export default {
         pregunta:
           "Me gustaría saber si sus cursos están reconocidos o acreditados por alguna institución.",
         respuesta:
-          "Otec Cenakin está reconocida por SENCE en la resolición N° 19606.",
+          "Otec Cenakin está reconocida por SENCE en la resolución N° 19606.",
       },
       {
         pregunta:

@@ -1,7 +1,6 @@
 <template>
   <div v-if="soloEntrada != null" id="entrada">
     <v-card width="100%" height="600">
-
       <div class="entrada__portada">
         <v-img
           sizes="(max-width: 1904px) 100vw, 1904px"

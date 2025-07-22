@@ -20,7 +20,7 @@ export default () => ({
     },
     {
       icono: "mdi-whatsapp",
-      ruta: "https://api.whatsapp.com/send?phone=56948567157",
+      ruta: "https://api.whatsapp.com/send?phone=56944871048",
       imagen: "/images/social/whatsapp.png",
       nombre: "Whastapp",
     },

@@ -11,7 +11,7 @@
       <header>
         <v-img src="/images/banner_bl.svg" alt="Banner Cenakin"></v-img>
         <v-spacer></v-spacer>
-        <div id="cerrarMobile" @click="drawer = false">
+        <div id="cerrarMobile" @click="drawer = false" class="pt-5">
           <v-icon>mdi-close</v-icon>
         </div>
       </header>
@@ -44,23 +44,12 @@
       app
       clipped-left
       flat
-      hide-on-scroll
-      :color="
-        0 < offsetTop && estadoMenu
-          ? '#272727'
-          : estadoMenu
-          ? 'transparent'
-          : 'white'
-      "
+      color="#272727"
     >
       <v-container class="d-flex align-center">
         <v-app-bar-nav-icon
           @click.stop="drawer = !drawer"
-          v-if="estadoMenu && $vuetify.breakpoint.mobile"
-        ></v-app-bar-nav-icon>
-        <v-btn icon v-else-if="$vuetify.breakpoint.mobile" @click="volver">
-          <v-icon>mdi-arrow-left</v-icon>
-        </v-btn>
+         class="d-flex d-lg-none"></v-app-bar-nav-icon>
         <v-spacer v-if="$vuetify.breakpoint.mobile"></v-spacer>
         <v-toolbar-title>
           <n-link to="/">
@@ -71,8 +60,8 @@
             ></v-img>
           </n-link>
         </v-toolbar-title>
-        <v-spacer v-if="$vuetify.breakpoint.lgAndUp"></v-spacer>
-        <div v-if="$vuetify.breakpoint.lgAndUp" id="menu-web">
+        <v-spacer class="d-none d-lg-flex"></v-spacer>
+        <div class="d-none d-lg-flex" id="menu-web">
           <v-toolbar-items>
             <Menu></Menu>
           </v-toolbar-items>
@@ -207,5 +196,5 @@ ol, ul
 .btn-basico
   font-size: 16px
   text-shadow: 1px 1px 1px black
-  width: 15rem
+  width: 25rem
 </style>

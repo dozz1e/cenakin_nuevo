@@ -28,7 +28,7 @@
           type="text"
         ></v-skeleton-loader>
       </v-col>
-      <v-col cols="12" md="4" v-for="n in 3" :key="n">
+      <v-col cols="12" md="3" v-for="n in 4" :key="n">
         <v-skeleton-loader
           :loading="loading"
           :transition="transition"
@@ -44,8 +44,8 @@
 export default {
   data: () => ({
     loading: true,
-    transition: "scale-transition"
-  })
+    transition: "scale-transition",
+  }),
 };
 </script>
 

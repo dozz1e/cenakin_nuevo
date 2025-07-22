@@ -2,283 +2,422 @@
   <div v-if="soloCurso" id="cursoPagina">
     <v-row>
       <v-card class="curso__item" width="100%" height="600" dark>
-        <div class="curso__item-capa">
-          <!---
-          <v-img sizes="(max-width: 1904px) 100vw, 1904px" :src="`/images/cursos/${soloCurso.slug}/1.webp`"
-            :srcset="`/images/cursos/${soloCurso.slug}/1@1x.webp 960w, /images/cursos/${soloCurso.slug}/1@2x.webp 1264w, /images/cursos/${soloCurso.slug}/1@3x.webp 1904w`"
-            alt="soloCurso.name" gradient="to bottom, rgba(4,157,252,.3), rgba(0,0,0,.5)" width="100%" height="600">
-            <v-container class="pa-0">
-              <v-card-actions class="pa-0 mx-4 align-end d-flex">
-                <v-list-item two-line class="pa-0">
-                  <v-list-item-content>
-                    <v-list-item-subtitle>{{ subtitulo }}</v-list-item-subtitle>
-                    <v-list-item-title>
-                      <h1 v-if="$vuetify.breakpoint.mobile" class="ml-3 mb-2" v-html="nombre(soloCurso.name)"></h1>
-                      <h1 v-else class="mb-2" v-html="soloCurso.name"></h1>
-                    </v-list-item-title>
-                  </v-list-item-content>
-                </v-list-item>
-              </v-card-actions>
-            </v-container>
-          </v-img>
-          -->
+        <div class="curso__item-capa relative">
           <picture>
-            <source :srcset="`/images/cursos/${soloCurso.slug}/1@1x.webp`" media="(max-width: 800px)" />
-            <source :srcset="`/images/cursos/${soloCurso.slug}/1@2x.webp`" media="(max-width: 1330px)" />
-            <source :srcset="`/images/cursos/${soloCurso.slug}/1@3x.webp`" media="(max-width: 1920px)" />
-            <img :src="`/images/cursos/${soloCurso.slug}/1@3x.webp`" :alt="soloCurso.name"/>
+            <source
+              :srcset="`https://cenakin.cl/images/cursos/${soloCurso.slug}/1@1x.webp`"
+              media="(max-width: 800px)"
+            />
+            <source
+              :srcset="`https://cenakin.cl/images/cursos/${soloCurso.slug}/1@2x.webp`"
+              media="(max-width: 1330px)"
+            />
+            <source
+              :srcset="`https://cenakin.cl/images/cursos/${soloCurso.slug}/1@3x.webp`"
+              media="(max-width: 1920px)"
+            />
+            <img
+              :src="`https://cenakin.cl/images/cursos/${soloCurso.slug}/1@3x.webp`"
+              :alt="soloCurso.name"
+              style="object-fit: cover"
+              class="h-full w-full"
+            />
           </picture>
-          <v-container class="pa-0">
-              <v-card-actions class="pa-0 mx-4 align-end d-flex">
-                <v-list-item two-line class="pa-0">
-                  <v-list-item-content>
-                    <v-list-item-subtitle>{{ subtitulo }}</v-list-item-subtitle>
-                    <v-list-item-title>
-                      <h1 v-if="$vuetify.breakpoint.mobile" class="ml-3 mb-2" v-html="nombre(soloCurso.name)"></h1>
-                      <h1 v-else class="mb-2" v-html="soloCurso.name"></h1>
-                    </v-list-item-title>
-                  </v-list-item-content>
-                </v-list-item>
-              </v-card-actions>
+          <div class="absolute bottom left">
+            <v-container>
+              <span class="subtitulo">{{ subtitulo }}</span>
+              <h1>{{ soloCurso.name }}</h1>
             </v-container>
+          </div>
         </div>
       </v-card>
     </v-row>
+
     <v-container>
-      <div class="px-2 py-3">
+      <div class="py-4">
         <v-row>
           <v-col cols="12" md="8">
             <v-row>
               <v-col cols="12" md="4">
-                <div class="d-flex justify-space-between">
-                  <v-btn color="primary" tile large class="btn-basico" :href="`/pdfs/${soloCurso.id}.pdf`"
-                    target="_blank">DESCARGAR PROGRAMA</v-btn>
-                  <v-btn tile large @click="favorito()" v-if="$vuetify.breakpoint.mobile">
+                <div class="d-flex">
+                  <v-btn
+                    color="purple"
+                    rounded
+                    x-large
+                    class="btn-basico font-weight-bold my-3"
+                    :href="`/pdfs/${soloCurso.id}.pdf`"
+                    target="_blank"
+                    block
+                  >
+                    DESCARGAR PROGRAMA
+                    <v-icon right large class="pl-4"> mdi-download </v-icon>
+                  </v-btn>
+                  <!-- <v-btn
+                    tile
+                    large
+                    @click="favorito()"
+                    v-if="$vuetify.breakpoint.mobile"
+                  >
                     <v-icon :style="iconoFavoritoStyle">{{
                       iconoFavorito
-                    }}</v-icon></v-btn>
-                </div>
-              </v-col>
-              <v-col cols="12" md="8" class="d-flex justify-end">
-                <div id="compartir" class="d-flex align-center">
-                  <h3>Compartir</h3>
-                  <share-network network="facebook" key="facebook"
-                    :url="`https://cenakin.cl/cursos/${$route.params.id}`" :title="titleCurso"
-                    :description="descripcionCurso" quote="Cenakin OTEC Cursos Viña del Mar, Chile."
-                    hashtags="cursos,otec" twitterUser="Dozz1e">
-                    <v-img src="/images/social/facebook.png" alt="Facebook" height="45" width="45" class="ml-3"></v-img>
-                  </share-network>
-                  <share-network network="whatsapp" key="whatsapp"
-                    :url="`https://cenakin.cl/cursos/${$route.params.id}`" :title="titleCurso"
-                    :description="descripcionCurso" quote="Cenakin OTEC Cursos Viña del Mar, Chile."
-                    hashtags="cursos,otec" twitterUser="Dozz1e">
-                    <v-img src="/images/social/whatsapp.png" alt="Whatsapp" height="45" width="45" class="ml-3"></v-img>
-                  </share-network>
+                    }}</v-icon></v-btn
+                  > -->
                 </div>
               </v-col>
             </v-row>
           </v-col>
-          <v-col cols="12" md="4" class="d-flex justify-end" v-if="!$vuetify.breakpoint.mobile">
+          <!-- <v-col
+            cols="12"
+            md="4"
+            class="d-flex justify-end"
+            v-if="!$vuetify.breakpoint.mobile"
+          >
             <v-btn tile large @click="favorito()">
               <v-icon :style="iconoFavoritoStyle">{{ iconoFavorito }} </v-icon>
             </v-btn>
-          </v-col>
+          </v-col> -->
         </v-row>
       </div>
+
       <v-row>
-        <v-col cols="12" md="8">
+        <v-col cols="12" lg="8">
           <v-card class="pa-5">
-            <v-card-text v-html="soloCurso.description"></v-card-text>
+            <v-card-text
+              v-html="soloCurso.description"
+              class="white--text"
+            ></v-card-text>
           </v-card>
-          <v-img :src="`/images/cursos/${soloCurso.slug}/2.webp`"
+
+          <!-- <v-img
+            :src="`/images/cursos/${soloCurso.slug}/2.webp`"
             :srcset="`/images/cursos/${soloCurso.slug}/2@1x.webp 600w, /images/cursos/${soloCurso.slug}/2@2x.webp 960w, /images/cursos/${soloCurso.slug}/2@3x.webp 1264w`"
-            :alt="`${soloCurso.name} Subportada`" width="100%" height="300"></v-img>
-          <v-card class="pa-5">
-            <v-row>
-              <v-col cols="8" class="pb-0">
-                <v-card-title class="pb-0"> OBJETIVO </v-card-title>
-              </v-col>
-            </v-row>
-            <v-row>
-              <v-col cols="3" class="pa-0"></v-col>
-              <v-col cols="9" class="pt-0">
-                <v-card-text v-html="soloCurso.acf.objetivo"></v-card-text>
-              </v-col>
-            </v-row>
-          </v-card>
+            :alt="`${soloCurso.name} Subportada`"
+            width="100%"
+            height="300"
+            class="mt-5"
+          ></v-img> -->
 
-          <div v-if="soloCurso.acf.titulo_3">
-            <div class="extra-titulo">
-              <h3>¿Qué Lograrás?</h3>
+          <!-- <iframe
+            width="100%"
+            height="350"
+            src="https://www.youtube.com/embed/9VVCvXt5gMU?si=YXnqLsYRHlqiwarP"
+            title="Cenakin Spa"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+            class="mt-5"
+          ></iframe> -->
+
+          <iframe
+            width="100%"
+            height="350"
+            src="https://www.youtube.com/embed/TsvfH9uQmas?si=p0ZMZYQ_k3fGWxVK"
+            title="Cenakin Spa"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+            class="mt-5"
+          ></iframe>
+
+          <v-card
+            class="d-flex justify-center mt-5 flex-column pa-5 flex-md-row"
+          >
+            <div class="d-flex justify-center align-center my-5 mx-md-10">
+              <img src="/images/banner.svg" class="acreditada" />
             </div>
-            <v-img :src="`/images/cursos/${soloCurso.slug}/3.webp`"
-              :srcset="`/images/cursos/${soloCurso.slug}/3@1x.webp 600w, /images/cursos/${soloCurso.slug}/3@2x.webp 960w, /images/cursos/${soloCurso.slug}/3@3x.webp 1264w`"
-              :alt="soloCurso.acf.titulo_3" width="100%" height="300">
-              <span class="d-flex align-center">{{ soloCurso.acf.titulo_3 }}</span>
-            </v-img>
-          </div>
-          <div v-if="soloCurso.acf.titulo_4">
-            <v-img :src="`/images/cursos/${soloCurso.slug}/4.webp`"
-              :srcset="`/images/cursos/${soloCurso.slug}/4@1x.webp 600w, /images/cursos/${soloCurso.slug}/4@2x.webp 960w, /images/cursos/${soloCurso.slug}/4@3x.webp 1264w`"
-              :alt="soloCurso.acf.titulo_4" width="100%" height="300">
-              <span class="d-flex align-center">{{ soloCurso.acf.titulo_4 }}</span>
-            </v-img>
-          </div>
-          <div v-if="soloCurso.acf.titulo_5">
-            <v-img :src="`/images/cursos/${soloCurso.slug}/5.webp`"
-              :srcset="`/images/cursos/${soloCurso.slug}/5@1x.webp 600w, /images/cursos/${soloCurso.slug}/5@2x.webp 960w, /images/cursos/${soloCurso.slug}/5@3x.webp 1264w`"
-              :alt="soloCurso.acf.titulo_5" width="100%" height="300">
-              <span class="d-flex align-center">{{ soloCurso.acf.titulo_5 }}</span>
-            </v-img>
-          </div>
-          <div v-if="soloCurso.acf.titulo_6">
-            <v-img :src="`/images/cursos/${soloCurso.slug}/6.webp`"
-              :srcset="`/images/cursos/${soloCurso.slug}/6@1x.webp 600w, /images/cursos/${soloCurso.slug}/6@2x.webp 960w, /images/cursos/${soloCurso.slug}/6@3x.webp 1264w`"
-              :alt="soloCurso.acf.titulo_6" width="100%" height="300">
-              <span class="d-flex align-center">{{ soloCurso.acf.titulo_6 }}</span>
-            </v-img>
-          </div>
-          <div v-if="soloCurso.acf.titulo_7">
-            <v-img :src="`/images/cursos/${soloCurso.slug}/7.webp`"
-              :srcset="`/images/cursos/${soloCurso.slug}/7@1x.webp 600w, /images/cursos/${soloCurso.slug}/7@2x.webp 960w, /images/cursos/${soloCurso.slug}/7@3x.webp 1264w`"
-              :alt="soloCurso.acf.titulo_7" width="100%" height="300">
-              <span class="d-flex align-center">{{ soloCurso.acf.titulo_7 }}</span>
-            </v-img>
-          </div>
+            <div
+              class="d-flex flex-column justify-center align-center my-5 mx-md-10"
+            >
+              <img
+                src="https://cenakin.cl/images/logos/nch.png"
+                alt="WMF"
+                class="acreditada2"
+              />
+              <span class="text-center mt-3"
+                >OTEC Certificada<br />OC-CER726261</span
+              >
+            </div>
+            <div
+              class="d-flex flex-column justify-center align-center my-5 mx-md-10"
+            >
+              <img
+                src="https://cenakin.cl/images/logos/wmf.avif"
+                alt="WMF"
+                class="acreditada3"
+              />
+              <span class="text-center mt-3"
+                >Miembro Oficial Federación Mundial<br />de Masajes WMF</span
+              >
+            </div>
+          </v-card>
 
-          <v-card class="pa-5" tile>
-            <v-row>
-              <v-col cols="8" class="pb-0">
-                <v-card-title> INCLUYE </v-card-title>
-              </v-col>
-            </v-row>
-            <v-row>
-              <v-col cols="3"></v-col>
-              <v-col cols="9" class="pt-0">
-                <v-card-text v-html="soloCurso.acf.incluye" class="pt-0"></v-card-text>
-              </v-col>
-            </v-row>
-          </v-card>
-          <v-card tile>
-            <v-row class="pa-5">
-              <v-col cols="8" class="pb-0">
-                <v-card-title> INICIO Y HORARIOS DE CLASES </v-card-title>
-              </v-col>
-            </v-row>
-            <v-row>
-              <v-col cols="3"></v-col>
-              <v-col cols="9">
-                <v-card-text v-html="soloCurso.acf.formato" class="pt-0"></v-card-text>
-              </v-col>
-            </v-row>
-            <v-row>
-              <v-col cols="12" sm="8" class="pt-0">
-                <v-card-text class="fecha">
-                  Fecha de Inicio:
-                  {{ `${soloCurso.acf.hora_inicio} ${soloCurso.acf.fecha_inicio}` }}
-                  <div v-if="soloCurso.acf.fecha_termino">
-                    <br />
-                    Fecha de Termino:
-                    {{ `${soloCurso.acf.hora_termino} ${soloCurso.acf.fecha_termino}` }}
+          <v-expansion-panels class="mt-5">
+            <v-expansion-panel class="mb-4">
+              <v-expansion-panel-header disable-icon-rotate class="font-weight-bold">
+                FECHAS Y HORARIOS
+                <template v-slot:actions>
+                  <v-icon>
+                    mdi-arrow-down-thick
+                  </v-icon>
+                </template>
+              </v-expansion-panel-header>
+              <v-expansion-panel-content>
+                <div class="p-5" v-html="soloCurso.acf.formato"></div>
+                <div class="font-weight-bold mt-3">
+                  <div class="fecha pa-4">
+                    Fecha de Inicio:
+                    {{
+                      `${soloCurso.acf.hora_inicio} ${soloCurso.acf.fecha_inicio}`
+                    }}
                   </div>
-                </v-card-text>
-              </v-col>
-            </v-row>
-          </v-card>
-          <v-card class="pa-5" tile>
+                  <div
+                    v-if="soloCurso.acf.fecha_termino"
+                    class="fecha pa-4 mt-2"
+                  >
+                    Fecha de Termino:
+                    {{
+                      `${soloCurso.acf.hora_termino} ${soloCurso.acf.fecha_termino}`
+                    }}
+                  </div>
+                </div>
+              </v-expansion-panel-content>
+            </v-expansion-panel>
+
+            <v-expansion-panel class="mb-4">
+              <v-expansion-panel-header disable-icon-rotate class="font-weight-bold">
+                DOCENTES
+                <template v-slot:actions>
+                  <v-icon>
+                    mdi-arrow-down-thick
+                  </v-icon>
+                </template>
+              </v-expansion-panel-header>
+              <v-expansion-panel-content>
+                <div class="p-5">
+                  <div
+                    v-for="(profe, index) in soloCurso.acf.profesores"
+                    :key="index"
+                    v-html="profe"
+                    class="mb-3"
+                  ></div>
+                </div>
+              </v-expansion-panel-content>
+            </v-expansion-panel>
+
+            <v-expansion-panel>
+              <v-expansion-panel-header disable-icon-rotate class="font-weight-bold">
+                RESERVA DE CUPO
+                <template v-slot:actions>
+                  <v-icon>
+                    mdi-arrow-down-thick
+                  </v-icon>
+                </template>
+              </v-expansion-panel-header>
+              <v-expansion-panel-content>
+                <p>Para reservar el cupo se realizan los siguientes pasos:</p>
+                <ul>
+                  <li>
+                    - Pagar el valor completo del curso o capacitación desde el
+                    botón comprar curso.
+                  </li>
+                  <li>
+                    - Una vez que se finalice el pago, recibiremos una
+                    notificación de inmediato. Nos pondremos en contacto
+                    contigo, en nuestros horarios de atención, y continuaremos
+                    con el proceso de inscripción.
+                  </li>
+                  <li>
+                    - Si deseas realizar tu inscripción por transferencia o en
+                    nuestras oficinas, déjanos un mensaje en nuestro whatsapp o
+                    correo eléctronico para entregarte los pasos a seguir.
+                  </li>
+                </ul>
+              </v-expansion-panel-content>
+            </v-expansion-panel>
+          </v-expansion-panels>
+
+          <v-row class="justify-center justify-lg-start my-5">
+            <v-btn
+              href="https://wa.link/v7vfjf"
+              target="_blank"
+              class="pa-8 px-10 green ma-0 ml-md-3 btn-whatsapp"
+            >
+              <v-icon left large class="mr-5"> mdi-whatsapp </v-icon>
+              <div class="d-flex flex-column">
+                <span>+56 9 4487 1048</span>
+                <span>MÁS INFORMACIÓN AQUÍ</span>
+              </div>
+            </v-btn>
+          </v-row>
+
+          <v-expansion-panels class="mt-5">
+            <v-expansion-panel class="mb-4">
+              <v-expansion-panel-header disable-icon-rotate class="font-weight-bold">
+                INCLUYE
+                <template v-slot:actions>
+                  <v-icon>
+                    mdi-arrow-down-thick
+                  </v-icon>
+                </template>
+              </v-expansion-panel-header>
+              <v-expansion-panel-content>
+                <div class="p-5" v-html="soloCurso.acf.incluye"></div>
+              </v-expansion-panel-content>
+            </v-expansion-panel>
+            <v-expansion-panel class="mb-4">
+              <v-expansion-panel-header disable-icon-rotate class="font-weight-bold">
+                OBJETIVOS
+                <template v-slot:actions>
+                  <v-icon>
+                    mdi-arrow-down-thick
+                  </v-icon>
+                </template>
+              </v-expansion-panel-header>
+              <v-expansion-panel-content>
+                <div class="p-5" v-html="soloCurso.acf.objetivo"></div>
+              </v-expansion-panel-content>
+            </v-expansion-panel>
+            <v-expansion-panel class="mb-4">
+              <v-expansion-panel-header disable-icon-rotate class="font-weight-bold">
+                REQUISITOS
+                <template v-slot:actions>
+                  <v-icon>
+                    mdi-arrow-down-thick
+                  </v-icon>
+                </template>
+              </v-expansion-panel-header>
+              <v-expansion-panel-content>
+                <div class="p-5" v-html="soloCurso.acf.dirigido"></div>
+              </v-expansion-panel-content>
+            </v-expansion-panel>
+            <v-expansion-panel>
+              <v-expansion-panel-header disable-icon-rotate class="font-weight-bold">
+                PLAN DE ESTUDIOS
+                <template v-slot:actions>
+                  <v-icon>
+                    mdi-arrow-down-thick
+                  </v-icon>
+                </template>
+              </v-expansion-panel-header>
+              <v-expansion-panel-content>
+                <div class="p-5" v-html="soloCurso.acf.plan_estudios"></div>
+              </v-expansion-panel-content>
+            </v-expansion-panel>
+          </v-expansion-panels>
+
+          <iframe
+            width="100%"
+            height="350"
+            src="https://www.youtube.com/embed/I-ghG4r4UVo?si=3xMCMmXShUiuLf3y"
+            title="Alumnos"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+            class="mt-5"
+          ></iframe>
+
+          <v-card color="#fff" class="mt-5" light>
             <v-row>
-              <v-col cols="8" class="pb-0">
-                <v-card-title> DIRIGIDO A </v-card-title>
-              </v-col>
-            </v-row>
-            <v-row>
-              <v-col cols="3"></v-col>
-              <v-col cols="9" class="pt-0">
-                <v-card-text v-html="soloCurso.acf.dirigido" class="pt-0"></v-card-text>
-              </v-col>
-            </v-row>
-          </v-card>
-          <v-card class="pa-5" tile>
-            <v-row>
-              <v-col cols="8" class="pb-0">
-                <v-card-title> PLAN DE ESTUDIOS </v-card-title>
-              </v-col>
-            </v-row>
-            <v-row>
-              <v-col cols="3"></v-col>
-              <v-col cols="9" class="pt-0">
-                <v-card-text v-html="soloCurso.acf.plan_estudios" class="pt-0"></v-card-text>
-              </v-col>
-            </v-row>
-          </v-card>
-          <v-card class="pa-5" tile>
-            <v-card-title> NUESTROS DOCENTES </v-card-title>
-            <v-card-text v-for="(profe, index) in soloCurso.acf.profesores" :key="index" v-html="profe">
-            </v-card-text>
-          </v-card>
-          <v-row id="pago" class="py-10">
-            <v-col cols="12" sm="6">
-              <v-card color="#fff" tile>
+              <v-col cols="12" md="6">
                 <header class="py-2 px-3">Valores y Formas de pago</header>
-                <v-card-text class="pa-5" tile>
+                <v-card-text class="pa-5">
                   <h2 class="mb-3">
-                    Arancel total {{ moneda(soloCurso.regular_price) }}
+                    Arancel total
+                    <del v-if="soloCurso.sale_price != ''"
+                      >{{ moneda(soloCurso.regular_price) }} CLP</del
+                    >
                   </h2>
-                  <div v-if="soloCurso.date_on_sale_to" class="mensaje">
-                    Arancel con pago Webpay {{ moneda(soloCurso.price) }} CLP.
-                    Válido hasta el
+                  <div
+                    v-if="
+                      soloCurso.sale_price != '' && soloCurso.date_on_sale_to
+                    "
+                    class="mensaje"
+                  >
+                    Arancel con descuento. Válido hasta el
                     {{ fecha2(soloCurso.date_on_sale_to) }}
                   </div>
-                  <div class="price pa-5">
+
+                  <div class="price ma-5">
                     {{ moneda(soloCurso.price) }} CLP
                   </div>
                   <v-divider></v-divider>
                   <v-card-actions class="px-0 pb-0">
-                    <v-btn x-large @click="btnComprar(soloCurso.id)" target="_blank" width="100%">
-                      CONTRATAR CURSO
+                    <v-btn
+                      x-large
+                      @click="btnComprar(soloCurso.id)"
+                      target="_blank"
+                      width="100%"
+                      class="btn-basico-violeta"
+                    >
+                      <v-icon left> mdi-check-decagram-outline </v-icon>
+                      INSCRÍBETE AQUÍ
                     </v-btn>
                   </v-card-actions>
                 </v-card-text>
-              </v-card>
-            </v-col>
-            <v-col cols="12" sm="6" class="medios-pago">
-              <v-card color="#fff" tile>
+              </v-col>
+              <v-col cols="12" md="6">
                 <header class="py-2 px-3">Medios de Pago</header>
                 <v-card-text class="pa-5">
-                  <span v-html="soloCurso.acf.medios_pago"></span>
+                  <span>
+                    Tarjeta de débito o tarjeta de crédito, hasta 6 cuotas
+                    precio contado.
+                  </span>
+                  <img
+                    src="/images/medios-pago.png"
+                    alt="Medios de Pago"
+                    width="100%"
+                  />
                 </v-card-text>
-              </v-card>
-            </v-col>
-          </v-row>
+              </v-col>
+            </v-row>
+          </v-card>
         </v-col>
-        <v-col cols="12" md="4">
+
+        <v-col cols="12" lg="4">
           <v-card class="pa-5 contactoLateral" tile>
             <ContactoDatos></ContactoDatos>
           </v-card>
-          <div class="pb-5 mt-2" v-if="$vuetify.breakpoint.lgAndUp">
-            <v-card height="300" class="d-flex flex-column align-center justify-center" tile>
-              <v-card-text class="d-flex justify-center flex-column align-center">
-                <h2 class="mb-4" v-if="soloCurso.regular_price == soloCurso.price">
-                  Arancel total:
-                  {{ moneda(soloCurso.regular_price) }} CLP
+          <div class="d-none d-lg-flex">
+            <v-card tile dark style="width: 100%">
+              <header class="py-2 px-3">Valores y Formas de pago</header>
+              <v-card-text class="pa-5 oscuro" tile>
+                <h2 class="mb-3">
+                  Arancel total
+                  <del v-if="soloCurso.sale_price != ''"
+                    >{{ moneda(soloCurso.regular_price) }} CLP</del
+                  >
                 </h2>
-                <h2 v-else>
-                  Arancel total:
-                  {{ moneda(soloCurso.price) }} CLP
-                  <span>
-                    <small><del>{{ moneda(soloCurso.regular_price) }}</del></small>
-                  </span>
-                </h2>
-                <span v-if="soloCurso.date_on_sale_to" class="mb-3">Arancel pago Webpay válido hasta el
-                  {{ fecha2(soloCurso.date_on_sale_to) }}</span>
-                <v-btn x-large color="primary" class="btn-basico" @click="btnComprar(soloCurso.id)"
-                  target="_blank">CONTRATAR CURSO</v-btn>
+                <div
+                  v-if="soloCurso.sale_price != '' && soloCurso.date_on_sale_to"
+                  class="mensaje mb-5"
+                >
+                  Arancel con descuento. Válido hasta el
+                  {{ fecha2(soloCurso.date_on_sale_to) }}
+                </div>
+                <div class="price">{{ moneda(soloCurso.price) }} CLP</div>
+                <v-divider class="mt-5"></v-divider>
+                <v-card-actions class="px-0 pb-0">
+                  <v-btn
+                    x-large
+                    @click="btnComprar(soloCurso.id)"
+                    target="_blank"
+                    width="100%"
+                    class="btn-basico-violeta"
+                  >
+                    <v-icon left> mdi-check-decagram-outline </v-icon>
+                    INSCRÍBETE AQUÍ
+                  </v-btn>
+                </v-card-actions>
               </v-card-text>
             </v-card>
           </div>
         </v-col>
       </v-row>
     </v-container>
+
     <Foot class="foot"></Foot>
   </div>
 </template>
@@ -287,16 +426,24 @@
 import { mapActions, mapGetters } from "vuex";
 import Foot from "~/components/Foot";
 import ContactoDatos from "~/components/ContactoDatos";
-import Marquesina from "~/components/Marquesina";
+import Suscripcion from "~/components/Suscripcion";
 
 export default {
   components: {
     ContactoDatos,
-    Marquesina,
+    Suscripcion,
     Foot,
   },
   data: () => ({
     iconoFavorito: "mdi-heart-outline",
+    valid: true,
+    name: "",
+    nameRules: [(v) => !!v || "Nombre es requerido"],
+    email: "",
+    emailRules: [
+      (v) => !!v || "E-mail es requerido",
+      (v) => /.+@.+\..+/.test(v) || "E-mail debe ser válido",
+    ],
   }),
   head() {
     return {
@@ -313,7 +460,10 @@ export default {
           content: `https://www.cenakin.cl/cursos/${this.$route.params.id}`,
         },
         { property: "og:title", content: this.soloCurso.name },
-        { property: "og:image", content: `https://www.cenakin.cl/images/cursos/${this.$route.params.id}/1.jpg` },
+        {
+          property: "og:image",
+          content: `https://www.cenakin.cl/images/cursos/${this.$route.params.id}/1.jpg`,
+        },
         { property: "og:description", content: this.descripcionCurso },
         {
           property: "twitter:title",
@@ -386,7 +536,7 @@ export default {
   methods: {
     ...mapActions("cursos", ["quitarCurso", "cambiarMenu"]),
     btnComprar(idCurso) {
-      fbq('track', 'AddToCart');
+      fbq("track", "AddToCart");
       window.location.href = `https://cenakin.cl/otec/carrito/?add-to-cart=${idCurso}`;
     },
     favorito() {
@@ -466,15 +616,6 @@ export default {
       return name;
     },
     fecha(hora, dia) {
-      // console.log(dia);
-      // let data = "";
-      // let fec = "";
-      // if ("" != hora) {
-      //   data = hora + " ";
-      // }
-      // if (10 > parseInt(dia.slice(6, 8))) fec = dia.slice(7, 8);
-      // else fec = dia.slice(6, 8);
-      // data += fec + " de " + this.mes(dia.slice(4, 6)) + " " + dia.slice(0, 4);
       return hora;
     },
     fecha2(dia) {
@@ -486,7 +627,6 @@ export default {
       else da = dia.slice(8, 10);
 
       return da + " de " + this.mes(mes) + " " + anno;
-      return dia;
     },
     mes(fecha) {
       let fec = "";
@@ -530,6 +670,9 @@ export default {
       }
       return fec;
     },
+    validate() {
+      this.$refs.form.validate();
+    },
   },
 
   async asyncData(context) {
@@ -551,20 +694,78 @@ export default {
 
 <style lang="sass">
 $color1: #049DFC
+$color2: #9c27b0
+
+.oscuro
+  .v-card__text, h2, .mensaje
+    color: #fff
+
+.relative
+  position: relative
+.absolute
+  position: absolute
+  h1
+    overflow-wrap: break-word
+  .subtitulo
+    text-shadow: 1px 1px 1px black
+    font-weight: bold
+    text-transform: uppercase
+    font-size: 1.2rem
+.bottom
+  bottom: 20px
+.left
+  left: 1rem
+@media (width > 600px)
+  .left
+    left: 2rem
+@media (width > 980px)
+  .left
+    left: 5rem
+
+@keyframes bounce
+  70%, 90%, 97%, 100%
+    transform: translateY(0%)
+  80%
+    transform: translateY(-15%)
+  95%
+    transform: translateY(-7%)
+  99%
+    transform: translateY(-3%)
+
+.bounce
+  animation: bounce 2s ease infinite
+
+.mdi-chevron-down::before
+  font-weight: bold
+  background-color: rgba(4, 157, 252, 0.9)
+  padding: 6px 6px 5px 5px
+  border-radius: 50px
+
+.price
+  color: rgba(4,157,252,.9)
+  font-size: 38px
+  font-weight: bold
+  padding: 10px 0
+  display: flex
+  justify-content: center
 
 #cursoPagina
   margin-top: -64px !important
   overflow: hidden
+
   picture
     display: flex
     justify-content: center
     img
-      height: 600px
+      height: 600px !important
+  @media (max-width:1023px)
+    picture
+      img
+        width: 100%
   @media (min-width:1024px)
     picture
       img
         position: absolute
-        top: -50%
         height: auto
         min-width: 100%
   h1
@@ -575,7 +776,7 @@ $color1: #049DFC
       line-height: 1.3
   hr
     color: rgba(0,0,0,.1)
-  #pago
+  .pago
     header
       border-bottom: 1px solid rgba(0,0,0,.1)
     .v-card
@@ -588,13 +789,6 @@ $color1: #049DFC
       .mensaje
         color: rgba(0,0,0,.6)
         font-size: 16px
-      .price
-        color: rgba(4,157,252,.9)
-        font-size: 38px
-        font-weight: bold
-        padding: 10px 0
-        display: flex
-        justify-content: center
       .v-btn
         background: rgba(4,157,252,.9)
   .container
@@ -659,7 +853,7 @@ $color1: #049DFC
     text-transform: uppercase
     word-break: normal
   .v-card__text
-    color: #eee
+    color: #121212
     font-size: 1rem
     h3
       align-items: center
@@ -671,6 +865,8 @@ $color1: #049DFC
       font-weight: 500
       letter-spacing: 0.0125em
       line-height: 1.2
+    h4
+      font-family: 'Roboto', sans-serif
     p
       margin: 0
   .v-list-item__subtitle
@@ -688,4 +884,23 @@ $color1: #049DFC
       font-size: 1.5rem
 #valor-precio
   background-color: $color1
+
+.btn-basico:hover
+  background-color: #641971 !important
+
+.acreditada
+    height: 60px
+.acreditada2
+  height: 100px
+  width: 80px
+.acreditada3
+  height: 100px
+  width: 100px
+
+.btn-whatsapp:hover
+  background-color: #347937 !important
+
+@media (min-width: 1024px)
+  .acreditada
+    height: 120px !important
 </style>

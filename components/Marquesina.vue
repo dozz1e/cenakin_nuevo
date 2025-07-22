@@ -1,47 +1,47 @@
 <template>
-	<div id="marquee" class="py-10">
-		<div class="marquee__item">
-			<h2 :style="cssProps" class="texto-bordeado">
-				{{textoCompleto}}
-			</h2>
-			<h2 :style="cssProps">
-				{{textoCompleto}}
-			</h2>
-		</div>
-		<div class="marquee__item">
-			<h2 :style="cssProps" class="texto-bordeado">
-				{{textoCompleto}}
-			</h2>
-			<h2 :style="cssProps">
-				{{textoCompleto}}
-			</h2>
-		</div>
-	</div>
+  <div id="marquee">
+    <div class="marquee__item">
+      <h2 :style="cssProps" class="texto-bordeado">
+        {{ textoCompleto }}
+      </h2>
+      <h2 :style="cssProps">
+        {{ textoCompleto }}
+      </h2>
+    </div>
+    <div class="marquee__item">
+      <h2 :style="cssProps" class="texto-bordeado">
+        {{ textoCompleto }}
+      </h2>
+      <h2 :style="cssProps">
+        {{ textoCompleto }}
+      </h2>
+    </div>
+  </div>
 </template>
 
 <script>
 export default {
-	props: {
-		texto: {
-			type: String,
-			default: ''
-		},
-		color: {
-			type: String,
-			default: '#fff'
-		}
-	},
-	computed:{
-		cssProps(){
-			return {
-				'--color-borde': this.color
-			}
-		},
-		textoCompleto(){
-			return this.texto
-		}
-	}
-}
+  props: {
+    texto: {
+      type: String,
+      default: "",
+    },
+    color: {
+      type: String,
+      default: "#fff",
+    },
+  },
+  computed: {
+    cssProps() {
+      return {
+        "--color-borde": this.color,
+      };
+    },
+    textoCompleto() {
+      return this.texto;
+    },
+  },
+};
 </script>
 
 <style lang="sass">
@@ -76,5 +76,4 @@ export default {
 	100%
 		-webkit-transform: translate3d(-100%,0,0)
 		transform: translate3d(-100%,0,0)
-
 </style>

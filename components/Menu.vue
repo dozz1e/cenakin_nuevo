@@ -29,7 +29,7 @@ export default {
       },
       {
         nombre: "CURSOS",
-        ruta: "/categorias/salud",
+        ruta: "/categorias/masoterapia",
       },
       {
         nombre: "DIPLOMADO",

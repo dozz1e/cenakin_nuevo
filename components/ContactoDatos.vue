@@ -31,7 +31,8 @@
       </li>
     </ul>
     <v-alert outlined type="success" prominent border="left" class="mt-5">
-      Para una mejor comunicación, prefiera contactarse a través de nuestro whatsapp o llamandonos.
+      Para una mejor comunicación, prefiera contactarse a través de nuestro
+      whatsapp o llamandonos.
     </v-alert>
   </v-card>
 </template>
@@ -55,7 +56,8 @@ export default {
       },
       {
         icono: "mdi-account-clock-outline",
-        texto: "Lunes a Viernes de 9:30 a 13:00 y 15:00 a 18:00 hrs.",
+        texto:
+          "Lunes a Viernes de 9:30 a 13:00 y 15:00 a 18:00 hrs. Sábados de 10:00 a 13:00 hrs.",
       },
       {
         icono: "mdi-phone",

@@ -1,8 +1,64 @@
 <template>
-  <div id="cursosCat">
-    <div class="header mb-2">NUESTROS CURSOS</div>
+  <div id="cursosCat" class="my-5">
+    <div class="header mb-2">NUESTRAS FORMACIONES</div>
+
+    <!-- <v-list class="pa-0">
+      <template v-for="(cat, index) in categorias">
+        <v-list-item
+          :href="`/categorias/${cat.slug}`"
+          :key="index"
+          class="py-2"
+        >
+          <v-list-item-avatar :color="cat.color" size="56">
+            <v-img
+              height="40"
+              width="40"
+              :src="`https://cenakin.cl/images/iconos/${cat.slug}.svg`"
+              contain
+              class="carImg"
+            ></v-img>
+          </v-list-item-avatar>
+
+          <v-list-item-content>
+            <v-list-item-title v-text="cat.nombre"></v-list-item-title>
+          </v-list-item-content>
+
+          <v-list-item-action>
+            <v-btn icon>
+              <v-icon color="grey lighten-1">mdi-arrow-right-thick</v-icon>
+            </v-btn>
+          </v-list-item-action>
+        </v-list-item>
+        <v-divider :key="index"></v-divider>
+      </template>
+    </v-list> -->
     <v-row>
-      <v-col cols="12" sm="4" v-for="(cat, index) in categorias" :key="index">
+      <v-col v-for="(cat, index) in categorias" :key="index" cols="12" lg="3">
+        <v-card class="mx-auto">
+          <v-list-item three-line :href="`/categorias/${cat.slug}`">
+            <v-list-item-avatar :color="cat.color" size="56">
+              <v-img
+                height="40"
+                width="40"
+                :src="`https://cenakin.cl/images/iconos/${cat.slug}.svg`"
+                contain
+                class="carImg"
+              ></v-img>
+            </v-list-item-avatar>
+            <v-list-item-content>
+              <v-list-item-title
+                class="text-h6 mb-1"
+                v-text="cat.nombre"
+              ></v-list-item-title>
+            </v-list-item-content>
+            <v-icon color="grey lighten-1">mdi-arrow-right-thick</v-icon>
+          </v-list-item>
+        </v-card>
+      </v-col>
+    </v-row>
+
+    <!-- <v-row>
+      <v-col cols="12" lg="3">
         <v-card
           :href="`/categorias/${cat.slug}`"
           :color="cat.color"
@@ -12,7 +68,7 @@
             <v-img
               height="80"
               width="80"
-              :src="`/images/iconos/${cat.slug}.svg`"
+              :src="`https://cenakin.cl/images/iconos/${cat.slug}.svg`"
               contain
               class="carImg"
             ></v-img>
@@ -23,7 +79,7 @@
           </div>
         </v-card>
       </v-col>
-    </v-row>
+    </v-row> -->
   </div>
 </template>
 
@@ -31,9 +87,10 @@
 export default {
   data: () => ({
     categorias: [
-      { nombre: "Salud y Bienestar", slug: "salud", color: "blue" },
+      { nombre: "Masoterapia", slug: "masoterapia", color: "blue" },
+      { nombre: "Salud", slug: "salud", color: "blue" },
       { nombre: "Marketing", slug: "marketing", color: "#5E169F" },
-      { nombre: "Ofimática", slug: "ofimatica", color: "green" },
+      { nombre: "Formaciones Online", slug: "online", color: "green" },
     ],
   }),
 };
@@ -43,7 +100,6 @@ export default {
 #cursosCat
   .carImg
     flex: 0 0 auto !important
-    margin-right: 20px
   .header
     color: #eee
     font-family: Oswald,sans-serif
@@ -51,7 +107,7 @@ export default {
     z-index: 1
   .card-curso
     height: 150px
-  @media (700px < width < 1200px)
+  @media (width < 1905px)
     .card-curso
       height: 300px
       text-align: center
@@ -62,5 +118,4 @@ export default {
         align-items: center
     .carImg
       margin-right: 0px
-      margin-bottom: 20px
 </style>

@@ -1,15 +1,18 @@
 <template>
-  <div id="portadaCat">
-    <v-card class="ma-0 elevation-0">
-      <div id="portadaInfo" class="d-flex flex-column align-start justify-end">
-        <picture>
-          <source :srcset="`/images/portada/categorias/${portada}_600.webp`" media="(max-width: 800px)" />
-          <source :srcset="`/images/portada/categorias/${ portada }_960.webp`" media="(max-width: 1330px)" />
-          <source :srcset="`/images/portada/categorias/${portada}_1264.webp`" media="(max-width: 1920px)" />
-          <img :src="`/images/portada/categorias/${portada}_1264.webp`" :alt="`Portada ${portada}`" width="100%" height="600"/>
-        </picture>
-      </div>
-    </v-card>
+  <div class="image-container">
+    <picture>
+      <source
+        srcset="/images/portada/1_1264.webp"
+        media="(min-width: 1200px)"
+        type="image/webp"
+      />
+      <source
+        srcset="/images/portada/1_960.webp"
+        media="(min-width: 768px)"
+        type="image/webp"
+      />
+      <img src="/images/portada/1_600.webp" alt="Portada Cenakin" />
+    </picture>
   </div>
 </template>
 
@@ -36,4 +39,7 @@ export default {
   justify-content: center
   overflow: hidden
   width: 100%
+video
+  width: 100%
+  height: auto
 </style>

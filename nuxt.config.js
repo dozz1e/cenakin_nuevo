@@ -42,7 +42,7 @@ export default {
       },
       {
         name: "keywords",
-        content: "Curso, masajes, viña del mar, valparaíso, masoterapia"
+        content: "Curso, masajes, viña del mar, valparaíso, masoterapia",
       },
       {
         property: "og:image:width",
@@ -64,9 +64,11 @@ export default {
         onload: "this.media='all'",
       },
     ],
-    script:[
-      { src: 'https://cenakin.cl/js/google-tag.js', defer: true }
-    ]
+    script: [
+      { src: "https://cenakin.cl/js/google-tag.js", defer: true },
+      { src: "https://cenakin.cl/js/clarity.js", defer: true },
+      { src: "https://cenakin.cl/js/mcjs.js", defer: true },
+    ],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css

@@ -5,12 +5,19 @@
       <cursosCat></cursosCat>
     </v-container>
     <marquesina
-      texto="empoderamiento.profesionalismo.expansión.liderazgo."
+      texto="empoderamiento - profesionalismo - expansión - liderazgo -"
+      class="py-16"
     ></marquesina>
     <v-container class="pb-0">
       <faqComp></faqComp>
     </v-container>
     <contactoComp></contactoComp>
+    <v-dialog v-model="dialog" max-width="700" elevation="0">
+      <v-btn color="white" fab small dark class="mb-2" @click="dialog = false">
+        <v-icon class="black--text">mdi-close</v-icon>
+      </v-btn>
+      <Suscripcion curso="Todos los cursos"></Suscripcion>
+    </v-dialog>
   </div>
 </template>
 
@@ -21,6 +28,7 @@ import CursosCat from "~/components/CursosCat";
 import FaqComp from "~/components/FaqComp";
 import ContactoComp from "~/components/ContactoComp";
 import Marquesina from "~/components/Marquesina";
+import Suscripcion from "~/components/Suscripcion.vue";
 
 export default {
   components: {
@@ -29,6 +37,13 @@ export default {
     FaqComp,
     Marquesina,
     ContactoComp,
+    Suscripcion,
+  },
+  data() {
+    return {
+      dialog: true,
+      textoBasico: "empoderamiento.profesionalismo.expansión.liderazgo.",
+    };
   },
   head() {
     return {
@@ -52,7 +67,10 @@ export default {
             "Un nuevo método de enseñanza para distintos cursos, con materiales incluidos, docentes kinesiólogos y calidad de servicio Viña del Mar, Chile.",
         },
         { property: "og:url", content: "https://www.cenakin.cl/" },
-        { property: "og:image", content: "https://cenakin.cl/images/logo_completo.png" },
+        {
+          property: "og:image",
+          content: "https://cenakin.cl/images/logo_completo.png",
+        },
       ],
     };
   },
@@ -67,3 +85,9 @@ export default {
   },
 };
 </script>
+
+<style>
+.v-dialog {
+  box-shadow: none !important;
+}
+</style>
