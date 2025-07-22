@@ -1,6 +1,6 @@
 <template>
   <div class="contactoForm">
-    <span>Déjanos tus datos y recibe ofertas</span>
+    <span>Déjanos tus datos y recibe ofertas.</span>
     <v-form ref="form" v-model="valid" lazy-validation>
       <v-text-field
         v-model="nombreForm"
@@ -22,7 +22,7 @@
       <v-checkbox
         dark
         v-model="checkboxForm"
-        :rules="[v => !!v || 'Debe hacer click para continuar']"
+        :rules="[(v) => !!v || 'Debe hacer click para continuar']"
         label="No soy un robot"
         required
       ></v-checkbox>
@@ -38,14 +38,14 @@ export default {
   data: () => ({
     valid: true,
     nombreForm: "",
-    nombreReglas: [v => !!v || "El Nombre es requerido"],
+    nombreReglas: [(v) => !!v || "El Nombre es requerido"],
     correoForm: "",
     correoReglas: [
-      v => !!v || "El Correo es requerido",
-      v => /.+@.+\..+/.test(v) || "El Correo debe ser válido"
+      (v) => !!v || "El Correo es requerido",
+      (v) => /.+@.+\..+/.test(v) || "El Correo debe ser válido",
     ],
     checkboxForm: false,
-    cursoForm: ""
+    cursoForm: "",
   }),
   computed: {
     ...mapGetters("cursos", ["listadoCursos"]),
@@ -53,17 +53,17 @@ export default {
     listaCurso() {
       let itemsForm = [];
 
-      this.listadoCursos.forEach(element => {
+      this.listadoCursos.forEach((element) => {
         itemsForm.push(element.title.rendered);
       });
       return itemsForm;
-    }
+    },
   },
   methods: {
     validar() {
       this.$refs.form.validate();
-    }
-  }
+    },
+  },
 };
 </script>
 
