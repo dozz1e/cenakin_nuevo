@@ -36,6 +36,11 @@
               class="w-full text--black"
               placeholder="correo@ejemplo.cl"
             ></v-text-field>
+            <v-select
+              v-model="curso"
+              :items="cursos"
+              label="Curso de Interés"
+            ></v-select>
 
             <v-btn
               @click="enviarFormulario"
@@ -61,34 +66,47 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
-  props: ["curso"],
   data: () => ({
     name: "",
     email: "",
     valido: false,
     error: false,
+    curso: "",
   }),
+  computed: {
+    ...mapGetters("cursos", ["listadoCursos"]),
+    cursos() {
+      return this.listadoCursos.map((curso) => {
+        return curso.name;
+      });
+    },
+  },
   methods: {
     reset() {
       this.name = "";
       this.email = "";
+      this.curso = "";
       this.$refs.form.reset();
     },
     enviarFormulario() {
-      if (this.name != "" && this.email != "") {
+      this.valido = false;
+
+      if (this.name && this.email) {
         this.error = false;
-        this.submit(this.curso);
+        this.submit();
       } else {
         this.error = true;
       }
     },
-    async submit(cursoName) {
+    async submit() {
       await this.$axios
         .post("https://cenakin.cl/otec/correo.php", {
           nombre: this.name,
           correo: this.email,
-          curso: cursoName,
+          curso: this.curso || "Sin curso elegido.",
         })
         .then((response) => {
           if (response.data.error) {

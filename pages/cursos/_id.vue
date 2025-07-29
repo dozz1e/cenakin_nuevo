@@ -109,18 +109,6 @@
             class="mt-5"
           ></iframe> -->
 
-          <iframe
-            width="100%"
-            height="350"
-            src="https://www.youtube.com/embed/TsvfH9uQmas?si=p0ZMZYQ_k3fGWxVK"
-            title="Cenakin Spa"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerpolicy="strict-origin-when-cross-origin"
-            allowfullscreen
-            class="mt-5"
-          ></iframe>
-
           <v-card
             class="d-flex justify-center mt-5 flex-column pa-5 flex-md-row"
           >

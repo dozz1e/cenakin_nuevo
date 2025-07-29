@@ -20,7 +20,7 @@
           >
             <v-icon class="black--text">mdi-close</v-icon>
           </v-btn>
-          <Suscripcion curso="Todos los cursos"></Suscripcion>
+          <Suscripcion></Suscripcion>
         </v-dialog>
         <v-row v-if="catCurso('diplomado-salud')">
           <v-col cols="12">

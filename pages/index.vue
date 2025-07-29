@@ -16,7 +16,7 @@
       <v-btn color="white" fab small dark class="mb-2" @click="dialog = false">
         <v-icon class="black--text">mdi-close</v-icon>
       </v-btn>
-      <Suscripcion curso="Todos los cursos"></Suscripcion>
+      <Suscripcion></Suscripcion>
     </v-dialog>
   </div>
 </template>
