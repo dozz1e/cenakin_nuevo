@@ -350,8 +350,7 @@
                 <header class="py-2 px-3">Medios de Pago</header>
                 <v-card-text class="pa-5">
                   <span>
-                    Tarjeta de débito o tarjeta de crédito, hasta 6 cuotas
-                    precio contado.
+                    Tarjeta de débito o tarjeta de crédito.
                   </span>
                   <img
                     src="/images/medios-pago.png"
