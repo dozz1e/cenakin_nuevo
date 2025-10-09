@@ -9,9 +9,14 @@
       :dark="estadoMenu"
     >
       <header>
-        <v-img src="/images/banner_bl.svg" alt="Banner Cenakin"></v-img>
+        <v-img
+          src="https://cenakin.cl/images/banner_blanco.svg"
+          alt="Banner Cenakin"
+          max-width="150"
+          max-height="50"
+        ></v-img>
         <v-spacer></v-spacer>
-        <div id="cerrarMobile" @click="drawer = false" class="pt-5">
+        <div id="cerrarMobile" @click="drawer = false">
           <v-icon>mdi-close</v-icon>
         </div>
       </header>
@@ -40,16 +45,12 @@
       </div>
     </v-navigation-drawer>
 
-    <v-app-bar
-      app
-      clipped-left
-      flat
-      color="#272727"
-    >
+    <v-app-bar app clipped-left flat color="#272727">
       <v-container class="d-flex align-center">
         <v-app-bar-nav-icon
           @click.stop="drawer = !drawer"
-         class="d-flex d-lg-none"></v-app-bar-nav-icon>
+          class="d-flex d-lg-none"
+        ></v-app-bar-nav-icon>
         <v-spacer v-if="$vuetify.breakpoint.mobile"></v-spacer>
         <v-toolbar-title>
           <n-link to="/">

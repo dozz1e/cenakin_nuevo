@@ -1,30 +1,4 @@
 <template>
-  <!-- <v-col cols="12" sm="6" lg="4" class="pt-0" id="listadoCurso">
-    <nuxt-link :to="`/cursos/${slug}`">
-      <v-card class="mb-4 curso__item" dark height="250" max-width="400">
-        <div class="cursoInfo d-flex flex-column align-start">
-          <v-img
-            :src="`https://cenakin.cl/images/cursos/${slug}/1.webp`"
-            :srcset="`/images/cursos/${slug}/1@1x.webp 600w, /images/cursos/${slug}/1@2x.webp 960w, /images/cursos/${slug}/1@3x.webp 1264w`"
-            :alt="titulo"
-            gradient="to bottom, rgba(4,157,252,.3), rgba(0,0,0,.5)"
-            width="100%"
-            height="250"
-          >
-            <v-card-title class="cenakin--title"> CYBER CENAKIN </v-card-title>
-            <v-card-actions class="pa-0 mx-4">
-              <v-list-item two-line class="pa-0">
-                <v-list-item-content>
-                  <v-list-item-subtitle>CURSO CERTIFICADO</v-list-item-subtitle>
-                  <v-list-item-title v-html="titulo"></v-list-item-title>
-                </v-list-item-content>
-              </v-list-item>
-            </v-card-actions>
-          </v-img>
-        </div>
-      </v-card>
-    </nuxt-link>
-  </v-col> -->
   <v-col cols="12" sm="4" lg="3">
     <nuxt-link :to="`/cursos/${slug}`">
       <v-card class="curso__item" dark id="listadoCurso">
@@ -37,7 +11,11 @@
         >
         </v-img>
 
-        <v-card-title class="cenakin--title"> CENAKIN </v-card-title>
+        <v-card-title class="cenakin--title">
+          {{
+            slug == "diplomado-masoterapia" ? "CYBER MONDAY" : "CENAKIN"
+          }}</v-card-title
+        >
         <v-card-actions class="pa-0">
           <v-list-item three-line>
             <v-list-item-content>

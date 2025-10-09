@@ -1,37 +1,6 @@
 <template>
   <div id="cursosCat" class="my-5">
     <div class="header mb-2">NUESTRAS FORMACIONES</div>
-
-    <!-- <v-list class="pa-0">
-      <template v-for="(cat, index) in categorias">
-        <v-list-item
-          :href="`/categorias/${cat.slug}`"
-          :key="index"
-          class="py-2"
-        >
-          <v-list-item-avatar :color="cat.color" size="56">
-            <v-img
-              height="40"
-              width="40"
-              :src="`https://cenakin.cl/images/iconos/${cat.slug}.svg`"
-              contain
-              class="carImg"
-            ></v-img>
-          </v-list-item-avatar>
-
-          <v-list-item-content>
-            <v-list-item-title v-text="cat.nombre"></v-list-item-title>
-          </v-list-item-content>
-
-          <v-list-item-action>
-            <v-btn icon>
-              <v-icon color="grey lighten-1">mdi-arrow-right-thick</v-icon>
-            </v-btn>
-          </v-list-item-action>
-        </v-list-item>
-        <v-divider :key="index"></v-divider>
-      </template>
-    </v-list> -->
     <v-row>
       <v-col v-for="(cat, index) in categorias" :key="index" cols="12" lg="3">
         <v-card class="mx-auto">
@@ -56,30 +25,6 @@
         </v-card>
       </v-col>
     </v-row>
-
-    <!-- <v-row>
-      <v-col cols="12" lg="3">
-        <v-card
-          :href="`/categorias/${cat.slug}`"
-          :color="cat.color"
-          class="d-flex align-center justify-center card-curso"
-        >
-          <div class="d-flex">
-            <v-img
-              height="80"
-              width="80"
-              :src="`https://cenakin.cl/images/iconos/${cat.slug}.svg`"
-              contain
-              class="carImg"
-            ></v-img>
-            <div class="d-flex flex-column justify-center">
-              <div class="pa-0">Escuela de</div>
-              <div v-text="cat.nombre" class="pa-0 display-1"></div>
-            </div>
-          </div>
-        </v-card>
-      </v-col>
-    </v-row> -->
   </div>
 </template>
 
