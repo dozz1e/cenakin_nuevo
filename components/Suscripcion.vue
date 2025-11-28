@@ -36,6 +36,13 @@
               class="w-full text--black"
               placeholder="correo@ejemplo.cl"
             ></v-text-field>
+            <v-text-field
+              v-model="telefono"
+              label="Teléfono"
+              required
+              class="w-full text--black"
+              placeholder="9 9999 9999"
+            ></v-text-field>
             <v-select
               v-model="curso"
               :items="cursos"
@@ -89,6 +96,7 @@ export default {
       this.name = "";
       this.email = "";
       this.curso = "";
+      this.telefono = "";
       this.$refs.form.reset();
     },
     enviarFormulario() {
@@ -106,6 +114,7 @@ export default {
         .post("https://cenakin.cl/otec/correo.php", {
           nombre: this.name,
           correo: this.email,
+          telefono: this.telefono,
           curso: this.curso || "Sin curso elegido.",
         })
         .then((response) => {
