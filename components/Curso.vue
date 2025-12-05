@@ -5,7 +5,7 @@
         <v-img
           class="relative"
           height="250"
-          :src="`https://cenakin.cl/images/cursos/${slug}/1@1x.webp`"
+          :src="`https://cenakin.cl/images/cursos/${slug}/mini.webp`"
           gradient="rgba(0,0,0,0.1), rgb(0,0,0,0.9)"
           eager
         >
@@ -13,7 +13,7 @@
 
         <v-card-title class="cenakin--title">
           {{
-            slug == "diplomado-masoterapia" ? "CYBER MONDAY" : "CENAKIN"
+            slug == "diplomado-masoterapia" ? "CENAKIN DAYS" : "CENAKIN"
           }}</v-card-title
         >
         <v-card-actions class="pa-0">
