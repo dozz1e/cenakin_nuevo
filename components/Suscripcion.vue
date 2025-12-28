@@ -4,7 +4,7 @@
       <v-col
         cols="12"
         sm="6"
-        class="pa-0 d-none d-sm-flex align-center justify-center"
+        class="d-sm-flex justify-center pa-0 d-none align-center"
       >
         <v-img
           src="/images/contacto.svg"
@@ -14,7 +14,7 @@
       </v-col>
       <v-col cols="12" sm="6">
         <div
-          class="ml-8 mr-10 d-flex justify-center items-center flex-column h-full suscripcion"
+          class="d-flex flex-column justify-center items-center mr-10 ml-8 h-full suscripcion"
         >
           <h2 class="pb-2">SUSCRÍBASE AHORA</h2>
           <p class="text--grey lighten-1">
@@ -79,6 +79,7 @@ export default {
   data: () => ({
     name: "",
     email: "",
+    telefono: "",
     valido: false,
     error: false,
     curso: "",
