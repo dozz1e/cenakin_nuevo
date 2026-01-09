@@ -71,9 +71,9 @@
     <v-main>
       <v-banner id="banner-aviso" class="text-center red darken-2">
         <a
-          href="/categorias/masoterapia"
+          href="https://cenakin.cl/cursos/masaje-relajante-descontracturante"
           class="d-flex justify-center font-weight-black align-center white--text"
-          >ÚLTIMOS DÍAS DE INSCRIPCIONES
+          >Hoy Último día de Inscripciones Ciclo Enero 2026
           <svg
             class="ml-2 w-6 h-6 text-gray-800 dark:text-white"
             aria-hidden="true"
