@@ -69,30 +69,6 @@
     </v-app-bar>
 
     <v-main>
-      <v-banner id="banner-aviso" class="text-center red darken-2">
-        <a
-          href="https://cenakin.cl/cursos/masaje-relajante-descontracturante"
-          class="d-flex justify-center font-weight-black align-center white--text"
-          >Hoy Último día de Inscripciones Ciclo Enero 2026
-          <svg
-            class="ml-2 w-6 h-6 text-gray-800 dark:text-white"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            fill="none"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M19 12H5m14 0-4 4m4-4-4-4"
-            />
-          </svg>
-        </a>
-      </v-banner>
       <nuxt />
       <sociales></sociales>
     </v-main>
